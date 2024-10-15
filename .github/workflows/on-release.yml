@@ -1,0 +1,10 @@
+name: On Release -- Push NuGet
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release-ci:
+    uses: magmaworks/actions/.github/workflows/on-release.yml@main
+    secrets: inherit

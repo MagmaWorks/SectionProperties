@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MagmaWorks.Taxonomy.Sections" Version="0.0.19" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageReference Include="OasysUnits.Serialization.JsonNet" Version="1.1.1" />
     <PackageReference Include="xunit" Version="2.6.6" />
@@ -22,9 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Template\MagmaWorks.Template.csproj" />
-    <ProjectReference Include="..\ITemplate\MagmaWorks.ITemplate.csproj" />
-    <ProjectReference Include="..\Serialization\MagmaWorks.Template.Serialization.csproj" />
+    <ProjectReference Include="..\SectionProperties\MagmaWorks.Taxonomy.Sections.SectionProperties.csproj" />
+    <ProjectReference Include="..\ISectionProperties\MagmaWorks.Taxonomy.Sections.ISectionProperties.csproj" />
+    <ProjectReference Include="..\Serialization\MagmaWorks.Taxonomy.Sections.SectionProperties.Serialization.csproj" />
   </ItemGroup>
 
 </Project>

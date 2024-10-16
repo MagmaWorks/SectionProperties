@@ -7,13 +7,13 @@
 
   <PropertyGroup>
     <TargetFrameworks>net48;net6.0;net7.0;net8.0</TargetFrameworks>
-	  <LangVersion>8.0</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <Platforms>AnyCPU</Platforms>
-    <RootNamespace>MagmaWorks.Template</RootNamespace>
+    <RootNamespace>MagmaWorks.Taxonomy.Sections.SectionProperties.Serialization</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>MagmaWorks Template</Title>
+    <Title>MagmaWorks Section Properties Serialization</Title>
     <Company>Whitby Wood</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -26,16 +26,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\ITemplate\MagmaWorks.ITemplate.csproj" />
+    <PackageReference Include="OasysUnits.Serialization.JsonNet" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-      <_Parameter1>TemplateTests</_Parameter1>
-    </AssemblyAttribute>
+    <ProjectReference Include="..\ISectionProperties\MagmaWorks.Taxonomy.Sections.ISectionProperties.csproj" />
+    <ProjectReference Include="..\SectionProperties\MagmaWorks.Taxonomy.Sections.SectionProperties.csproj" />
   </ItemGroup>
 
   <ItemGroup>

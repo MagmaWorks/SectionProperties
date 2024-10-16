@@ -7,13 +7,13 @@
 
   <PropertyGroup>
     <TargetFrameworks>net48;net6.0;net7.0;net8.0</TargetFrameworks>
-    <LangVersion>8.0</LangVersion>
+	  <LangVersion>8.0</LangVersion>
     <Platforms>AnyCPU</Platforms>
-    <RootNamespace>MagmaWorks.Template.Serialization</RootNamespace>
+    <RootNamespace>MagmaWorks.Taxonomy.Sections.SectionProperties</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>MagmaWorks Template Serialization</Title>
+    <Title>MagmaWorks Section Properties</Title>
     <Company>Whitby Wood</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -22,16 +22,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MagmaWorks.Taxonomy.ISections" Version="0.0.19" />
+    <PackageReference Include="MagmaWorks.Taxonomy.Profiles.Perimeter" Version="0.0.19" />
     <PackageReference Include="MinVer" Version="4.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="OasysUnits.Serialization.JsonNet" Version="1.1.1" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <ProjectReference Include="..\ITemplate\MagmaWorks.ITemplate.csproj" />
-    <ProjectReference Include="..\Template\MagmaWorks.Template.csproj" />
+    <ProjectReference Include="..\ISectionProperties\MagmaWorks.Taxonomy.Sections.ISectionProperties.csproj" />
   </ItemGroup>
 
   <ItemGroup>

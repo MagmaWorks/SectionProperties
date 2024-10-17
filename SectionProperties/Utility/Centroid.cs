@@ -27,6 +27,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                         return new LocalPoint2d(y, z);
                     }
 
+
                 case IC c:
                     {
                         OasysUnits.Area lip = c.FlangeThickness * c.Lip;
@@ -56,7 +57,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                         OasysUnits.Area web = customI.WebThickness *
                             (customI.Height - customI.TopFlangeThickness - customI.BottomFlangeThickness);
                         Volume qy = topFlange * (customI.Height / 2 - customI.TopFlangeThickness / 2)
-                            + bottomFlange * (customI.Height/ 2 - customI.BottomFlangeThickness / 2);
+                            + bottomFlange * (customI.Height / 2 - customI.BottomFlangeThickness / 2);
                         Length z = qy / (topFlange + web + bottomFlange);
                         return new LocalPoint2d(Length.Zero, z);
                     }

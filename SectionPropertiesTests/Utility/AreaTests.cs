@@ -15,7 +15,7 @@ namespace SectionPropertiesTests
             OasysUnits.Area area = Utility.Area.CalculateArea(section);
 
             // Assert
-            Assert.Equal((23-15)*10.9+54*15, area.SquareMillimeters, 12);
+            Assert.Equal((23 - 15) * 10.9 + 54 * 15, area.SquareMillimeters, 12);
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace SectionPropertiesTests
             OasysUnits.Area area = Utility.Area.CalculateArea(section);
 
             // Assert
-            Assert.Equal(2 * 100.4*15 + (200.3-2*15)*10, area.SquareMillimeters, 10);
+            Assert.Equal(2 * 100.4 * 15 + (200.3 - 2 * 15) * 10, area.SquareMillimeters, 10);
         }
 
         [Fact]
@@ -80,7 +80,7 @@ namespace SectionPropertiesTests
             OasysUnits.Area area = Utility.Area.CalculateArea(section);
 
             // Assert
-            Assert.Equal(23*10.9+54*15-10.9*15, area.SquareMillimeters, 12);
+            Assert.Equal(23 * 10.9 + 54 * 15 - 10.9 * 15, area.SquareMillimeters, 12);
         }
 
         [Fact]
@@ -93,7 +93,7 @@ namespace SectionPropertiesTests
             OasysUnits.Area area = Utility.Area.CalculateArea(section);
 
             // Assert
-            Assert.Equal(20*7+25*3+(20-7-3)*5, area.SquareCentimeters, 12);
+            Assert.Equal(20 * 7 + 25 * 3 + (20 - 7 - 3) * 5, area.SquareCentimeters, 12);
         }
 
         [Fact]
@@ -106,7 +106,7 @@ namespace SectionPropertiesTests
             OasysUnits.Area area = Utility.Area.CalculateArea(section);
 
             // Assert
-            Assert.Equal(2*((23 - 15) * 10.9 + 54 * 15), area.SquareMillimeters, 12);
+            Assert.Equal(2 * ((23 - 15) * 10.9 + 54 * 15), area.SquareMillimeters, 12);
         }
 
         [Fact]
@@ -119,7 +119,7 @@ namespace SectionPropertiesTests
             OasysUnits.Area area = Utility.Area.CalculateArea(section);
 
             // Assert
-            Assert.Equal(2*(2 * 100.4 * 15 + (200.3 - 2 * 15) * 10), area.SquareMillimeters, 10);
+            Assert.Equal(2 * (2 * 100.4 * 15 + (200.3 - 2 * 15) * 10), area.SquareMillimeters, 10);
         }
 
         [Fact]
@@ -171,7 +171,7 @@ namespace SectionPropertiesTests
             OasysUnits.Area area = Utility.Area.CalculateArea(section);
 
             // Assert
-            Assert.Equal(2*504*15 + (203-2*15)*10.9, area.SquareMillimeters, 12);
+            Assert.Equal(2 * 504 * 15 + (203 - 2 * 15) * 10.9, area.SquareMillimeters, 12);
         }
 
         [Fact]
@@ -236,7 +236,7 @@ namespace SectionPropertiesTests
             OasysUnits.Area area = Utility.Area.CalculateArea(section);
 
             // Assert
-            Assert.Equal(0.5*(100.4+150.4)*200.3, area.SquareMillimeters, 10);
+            Assert.Equal(0.5 * (100.4 + 150.4) * 200.3, area.SquareMillimeters, 10);
         }
 
         [Fact]

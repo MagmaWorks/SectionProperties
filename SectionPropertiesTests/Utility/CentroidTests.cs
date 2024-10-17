@@ -117,5 +117,22 @@ namespace SectionPropertiesTests
             Assert.Equal(0, pt.Y.Value, 12);
             Assert.Equal(-134.5679, pt.Z.Millimeters, 5);
         }
+
+        //[Fact]
+        //public void DoubleSymmetricProfiles()
+        //{
+        //    // Assemble
+        //    var profiles = new List<IProfile>()
+        //    {
+
+        //    }
+
+        //    // Act
+        //    ILocalPoint2d pt = Centroid.CalculateCentroid(section);
+
+        //    // Assert
+        //    Assert.Equal(0, pt.Y.Value, 12);
+        //    Assert.Equal(-134.5679, pt.Z.Millimeters, 5);
+        //}
     }
 }

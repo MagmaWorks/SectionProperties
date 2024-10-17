@@ -1,9 +1,9 @@
-﻿using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MagmaWorks.Geometry;
+using MagmaWorks.Taxonomy.Profiles;
+using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
@@ -13,6 +13,14 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
         {
             switch (profile)
             {
+                case IDoubleAngle doubleAngle:
+                    {
+                        OasysUnits.Area flange = doubleAngle.FlangeThickness * doubleAngle.Width;
+                        OasysUnits.Area web = doubleAngle.WebThickness *
+                            (doubleAngle.Height - doubleAngle.FlangeThickness);
+                        return 2 * (flange + web);
+                    }
+
                 case IAngle angle:
                     {
                         OasysUnits.Area flange = angle.FlangeThickness * angle.Width;
@@ -20,13 +28,20 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                         return flange + web;
                     }
 
-
                 case IC c:
                     {
                         OasysUnits.Area lip = c.FlangeThickness * c.Lip;
                         OasysUnits.Area flange = c.FlangeThickness * (c.Width - c.FlangeThickness);
                         OasysUnits.Area web = c.WebThickness * (c.Height - 2 * c.FlangeThickness);
                         return 2 * (lip + flange) + web;
+                    }
+
+                case IDoubleChannel doubleChannel:
+                    {
+                        OasysUnits.Area flange = doubleChannel.FlangeThickness * doubleChannel.Width;
+                        OasysUnits.Area web = doubleChannel.WebThickness *
+                            (doubleChannel.Height - 2 * doubleChannel.FlangeThickness);
+                        return 2 * (2 * flange + web);
                     }
 
                 case IChannel channel:
@@ -37,9 +52,9 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                     }
 
                 case ICircularHollow circularHollow:
-                    return 0.25 * Math.PI * (circularHollow.Diameter * circularHollow.Diameter -
-                        (circularHollow.Diameter - circularHollow.Thickness) *
-                        (circularHollow.Diameter - circularHollow.Thickness));
+                    return 0.25 * Math.PI * circularHollow.Diameter * circularHollow.Diameter -
+                        0.25 * Math.PI * (circularHollow.Diameter - 2 * circularHollow.Thickness) *
+                        (circularHollow.Diameter - 2 * circularHollow.Thickness);
 
                 case ICircle circle:
                     return 0.25 * Math.PI * circle.Diameter * circle.Diameter;
@@ -47,6 +62,15 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                 case ICruciform cruciform:
                     return cruciform.FlangeThickness * cruciform.Width +
                         (cruciform.Height - cruciform.FlangeThickness) * cruciform.WebThickness;
+
+                case ICustomI customI:
+                    {
+                        OasysUnits.Area topFlange = customI.TopFlangeThickness * customI.TopFlangeWidth;
+                        OasysUnits.Area bottomFlange = customI.BottomFlangeThickness * customI.BottomFlangeWidth;
+                        OasysUnits.Area web = customI.WebThickness *
+                            (customI.Height - customI.TopFlangeThickness - customI.BottomFlangeThickness);
+                        return topFlange + web + bottomFlange;
+                    }
 
                 case IEllipseHollow ellipseHollow:
                     return 0.25 * Math.PI * ellipseHollow.Width * ellipseHollow.Height
@@ -62,7 +86,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                         OasysUnits.Area web = parallelFlange.WebThickness *
                             (parallelFlange.Height - 2 * parallelFlange.FlangeThickness);
                         OasysUnits.Area fillets = parallelFlange.FilletRadius * parallelFlange.FilletRadius * 4
-                            - 0.25 * Math.PI * parallelFlange.FilletRadius * parallelFlange.FilletRadius;
+                            - Math.PI * parallelFlange.FilletRadius * parallelFlange.FilletRadius;
                         return 2 * flanges + web + fillets;
                     }
 
@@ -81,23 +105,18 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 
                 case IRoundedRectangularHollow roundedRectangularHollow:
                     {
-                        OasysUnits.Area ellipse = 0.25 * Math.PI * (roundedRectangularHollow.Width - roundedRectangularHollow.FlatWidth)
-                            * (roundedRectangularHollow.Height - roundedRectangularHollow.FlatHeight);
-                        OasysUnits.Area rectangle = roundedRectangularHollow.FlatWidth * roundedRectangularHollow.FlatHeight;
-                        OasysUnits.Area ellipseVoid = Math.PI *
-                            ((roundedRectangularHollow.Width - roundedRectangularHollow.FlatWidth) / 2 - roundedRectangularHollow.Thickness)
-                            * ((roundedRectangularHollow.Height - roundedRectangularHollow.FlatHeight) / 2 - roundedRectangularHollow.Thickness);
-                        OasysUnits.Area rectangleVoid = (roundedRectangularHollow.FlatWidth - 2 * roundedRectangularHollow.Thickness)
-                            * (roundedRectangularHollow.FlatHeight - 2 * roundedRectangularHollow.Thickness);
-                        return ellipse + rectangle - ellipseVoid - rectangleVoid;
+                        OasysUnits.Area solid = CalculateRoundedRectangleArea(roundedRectangularHollow.Width, roundedRectangularHollow.FlatWidth,
+                            roundedRectangularHollow.Height, roundedRectangularHollow.FlatHeight);
+                        OasysUnits.Area rvoid = CalculateRoundedRectangleArea(roundedRectangularHollow.Width - 2 * roundedRectangularHollow.Thickness,
+                            roundedRectangularHollow.FlatWidth - 2 * roundedRectangularHollow.Thickness,
+                            roundedRectangularHollow.Height - 2 * roundedRectangularHollow.Thickness, roundedRectangularHollow.FlatHeight - 2 * roundedRectangularHollow.Thickness);
+                        return solid - rvoid;
                     }
 
                 case IRoundedRectangle roundedRectangle:
                     {
-                        OasysUnits.Area ellipse = 0.25 * Math.PI * (roundedRectangle.Width - roundedRectangle.FlatWidth)
-                            * (roundedRectangle.Height - roundedRectangle.FlatHeight);
-                        OasysUnits.Area rectangle = roundedRectangle.FlatWidth * roundedRectangle.FlatHeight;
-                        return ellipse + rectangle;
+                        return CalculateRoundedRectangleArea(roundedRectangle.Width, roundedRectangle.FlatWidth,
+                            roundedRectangle.Height, roundedRectangle.FlatHeight);
                     }
 
                 case IRectangle rectangle:
@@ -138,6 +157,16 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                         return area;
                     }
             }
+        }
+
+        internal static OasysUnits.Area CalculateRoundedRectangleArea(Length width, Length flatWidth, Length height, Length flatHeight)
+        {
+            OasysUnits.Area ellipse = 0.25 * Math.PI * (width - flatWidth)
+                            * (height - flatHeight);
+            OasysUnits.Area rectangle = flatWidth * height;
+            OasysUnits.Area sides = (width - flatWidth)
+                * (height - (height - flatHeight));
+            return ellipse + rectangle + sides;
         }
 
         internal static OasysUnits.Area CalculatePartArea(IList<ILocalPoint2d> pts)

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
 using OasysUnits;
@@ -49,6 +48,18 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                         Volume qz = 2 * flange * channel.Width / 2 + web * channel.WebThickness / 2;
                         Length y = qz / (2 * flange + web);
                         return new LocalPoint2d(y, Length.Zero);
+                    }
+
+                case ICustomI customI:
+                    {
+                        OasysUnits.Area topFlange = customI.TopFlangeThickness * customI.TopFlangeWidth;
+                        OasysUnits.Area bottomFlange = customI.BottomFlangeThickness * customI.BottomFlangeWidth;
+                        OasysUnits.Area web = customI.WebThickness *
+                            (customI.Height - customI.TopFlangeThickness - customI.BottomFlangeThickness);
+                        Volume qy = topFlange * (customI.Height / 2 - customI.TopFlangeThickness / 2)
+                            + bottomFlange * (customI.Height/ 2 - customI.BottomFlangeThickness / 2);
+                        Length z = qy / (topFlange + web + bottomFlange);
+                        return new LocalPoint2d(Length.Zero, z);
                     }
 
                 case ICircularHollow circularHollow:

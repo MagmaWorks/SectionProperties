@@ -26,7 +26,6 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                         Length z = qy / (flange + web);
                         return new LocalPoint2d(y, z);
                     }
-                    
 
                 case IC c:
                     {

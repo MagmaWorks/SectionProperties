@@ -128,7 +128,7 @@ namespace SectionPropertiesTests.TestUtility
             return MockSection(prfl);
         }
 
-        public static ISection CreateParallelFlange()
+        public static ISection CreateIParallelFlange()
         {
             IIParallelFlange prfl = new MockHEB500();
             return MockSection(prfl);

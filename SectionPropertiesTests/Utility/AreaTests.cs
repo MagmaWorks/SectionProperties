@@ -152,7 +152,7 @@ namespace SectionPropertiesTests
         public void ParallelFlange()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateParallelFlange().Profile;
+            IProfile section = TestUtility.Sections.CreateIParallelFlange().Profile;
 
             // Act
             OasysUnits.Area area = Utility.Area.CalculateArea(section);

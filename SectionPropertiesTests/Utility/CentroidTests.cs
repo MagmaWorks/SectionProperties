@@ -1,5 +1,6 @@
 ﻿using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
+using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 
 namespace SectionPropertiesTests
@@ -117,5 +118,33 @@ namespace SectionPropertiesTests
             Assert.Equal(0, pt.Y.Value, 12);
             Assert.Equal(-134.5679, pt.Z.Millimeters, 5);
         }
+
+        [Theory]
+        [MemberData(nameof(DoubleSymmetricProfiles))]
+        public void DoubleSymmetricProfile(ISection section)
+        {
+            // Act
+            ILocalPoint2d pt = Centroid.CalculateCentroid(section.Profile);
+
+            // Assert
+            Assert.Equal(0, pt.Y.Value);
+            Assert.Equal(0, pt.Z.Value);
+        }
+
+        public static IEnumerable<object[]> DoubleSymmetricProfiles =>
+            new List<object[]>
+            {
+            new object[] { TestUtility.Sections.CreateCircularHollow() },
+            new object[] { TestUtility.Sections.CreateCircle() },
+            new object[] { TestUtility.Sections.CreateCruciform() },
+            new object[] { TestUtility.Sections.CreateEllipse() },
+            new object[] { TestUtility.Sections.CreateEllipseHollow() },
+            new object[] { TestUtility.Sections.CreateIParallelFlange() },
+            new object[] { TestUtility.Sections.CreateI() },
+            new object[] { TestUtility.Sections.CreateRectangularHollow() },
+            new object[] { TestUtility.Sections.CreateRoundedRectangularHollow() },
+            new object[] { TestUtility.Sections.CreateRoundedRectangle() },
+            new object[] { TestUtility.Sections.CreateRectangle() },
+            };
     }
 }

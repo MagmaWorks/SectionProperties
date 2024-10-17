@@ -2,8 +2,8 @@
 using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
-using OasysUnits.Units;
 using OasysUnits;
+using OasysUnits.Units;
 using Angle = MagmaWorks.Taxonomy.Profiles.Angle;
 
 namespace SectionPropertiesTests.TestUtility

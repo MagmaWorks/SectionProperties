@@ -10,21 +10,15 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
     {
         public static Length CalculatePerimeter(IProfile profile)
         {
-            switch (profile)
+            IPerimeter perimeter = new Profiles.Perimeter(profile);
+            Length length = Length.Zero;
+            for (int i = 0; i < perimeter.OuterEdge.Points.Count - 1; i++)
             {
-                default:
-                    {
-                        IPerimeter perimeter = new Perimeter(profile);
-                        Length length = Length.Zero;
-                        for (int i = 0; i < perimeter.OuterEdge.Points.Count - 1; i++)
-                        {
-                            length += Distance(perimeter.OuterEdge.Points[i],
-                                perimeter.OuterEdge.Points[i + 1]);
-                        }
-
-                        return length;
-                    }
+                length += Distance(perimeter.OuterEdge.Points[i],
+                    perimeter.OuterEdge.Points[i + 1]);
             }
+
+            return length;
         }
 
         private static Length Distance(ILocalPoint2d p1, ILocalPoint2d p2)

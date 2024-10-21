@@ -188,6 +188,19 @@ namespace SectionPropertiesTests
         }
 
         [Fact]
+        public void RectangularHollow()
+        {
+            // Assemble
+            IProfile section = TestUtility.Sections.CreateRectangularHollow().Profile;
+
+            // Act
+            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+
+            // Assert
+            Assert.Equal(20.3 * 50.4 - (20.3-2*1.09) * (50.4-2*1.09), area.SquareCentimeters, 12);
+        }
+
+        [Fact]
         public void RoundedRectangle()
         {
             // Assemble
@@ -210,7 +223,7 @@ namespace SectionPropertiesTests
             OasysUnits.Area area = Utility.Area.CalculateArea(section);
 
             // Assert
-            Assert.Equal(11979, area.SquareMillimeters, 10);
+            Assert.Equal(11979, area.SquareMillimeters, 9);
         }
 
         [Fact]

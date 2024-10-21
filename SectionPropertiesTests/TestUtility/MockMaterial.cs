@@ -4,7 +4,7 @@ namespace SectionPropertiesTests.TestUtility
 {
     internal class MockMaterial : IMaterial
     {
-        public MaterialType Type => throw new NotImplementedException();
+        public MaterialType Type => MaterialType.Generic;
 
         public MockMaterial() { }
     }

@@ -62,7 +62,8 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
 
         public static IList<IPart> CreateCircle(Length diameter)
         {
-            if (diameter.Value < 0) {
+            if (diameter.Value < 0)
+            {
                 return CreateFullEllipse(diameter, diameter.Abs());
             }
 

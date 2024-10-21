@@ -197,7 +197,7 @@ namespace SectionPropertiesTests
             OasysUnits.Area area = Utility.Area.CalculateArea(section);
 
             // Assert
-            Assert.Equal(20.3 * 50.4 - (20.3-2*1.09) * (50.4-2*1.09), area.SquareCentimeters, 12);
+            Assert.Equal(20.3 * 50.4 - (20.3 - 2 * 1.09) * (50.4 - 2 * 1.09), area.SquareCentimeters, 12);
         }
 
         [Fact]

@@ -270,7 +270,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                     // web
                     parts.Add(new TrapezoidalPart(tee.WebThickness, tee.Height - tee.FlangeThickness,
                     new LocalPoint2d(Length.Zero,
-                            - tee.FlangeThickness - (tee.Height - tee.FlangeThickness) / 2)));
+                            -tee.FlangeThickness - (tee.Height - tee.FlangeThickness) / 2)));
                     return parts;
 
                 case ITrapezoid trapezoid:

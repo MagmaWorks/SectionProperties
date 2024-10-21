@@ -1,4 +1,5 @@
-﻿using MagmaWorks.Geometry;
+﻿using System;
+using MagmaWorks.Geometry;
 using OasysUnits;
 using OasysUnits.Units;
 
@@ -80,6 +81,29 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
             OasysUnits.Area res = OasysUnits.Area.Zero;
             OasysUnits.Area.TryParse($"0 {Length.GetAbbreviation(unit)}²", out res);
             return new OasysUnits.Area(0.5 * (a.As(unit) + b.As(unit)) * h.As(unit), res.Unit);
+        }
+
+        public AreaMomentOfInertia GetMomentOfInertiaYy()
+        {
+            LengthUnit unit = a.Unit;
+            AreaMomentOfInertia res = AreaMomentOfInertia.Zero;
+            AreaMomentOfInertia.TryParse($"0 {Length.GetAbbreviation(unit)}⁴", out res);
+            return new AreaMomentOfInertia(
+                Math.Pow(h.As(unit), 3) *
+                (Math.Pow(a.As(unit), 2) + 4 * a.As(unit) * b.As(unit) + Math.Pow(b.As(unit), 2))
+                / (36 * (a.As(unit) + b.As(unit))), res.Unit);
+        }
+
+        public AreaMomentOfInertia GetMomentOfInertiaZz()
+        {
+            LengthUnit unit = a.Unit;
+            AreaMomentOfInertia res = AreaMomentOfInertia.Zero;
+            AreaMomentOfInertia.TryParse($"0 {Length.GetAbbreviation(unit)}⁴", out res);
+            return a.As(unit) == b.As(unit)
+                ? new AreaMomentOfInertia(h.As(unit) * Math.Pow(a.As(unit), 3) / 12, res.Unit)
+                : new AreaMomentOfInertia(
+                h.As(unit) * (Math.Pow(a.As(unit), 4) - Math.Pow(b.As(unit), 4))
+                / (48 * (a.As(unit) - b.As(unit))), res.Unit);
         }
     }
 }

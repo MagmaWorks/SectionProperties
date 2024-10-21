@@ -7,5 +7,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
     {
         public ILocalPoint2d ElasticCentroid { get; }
         public OasysUnits.Area GetArea();
+        public AreaMomentOfInertia GetMomentOfInertiaYy();
+        public AreaMomentOfInertia GetMomentOfInertiaZz();
     }
 }

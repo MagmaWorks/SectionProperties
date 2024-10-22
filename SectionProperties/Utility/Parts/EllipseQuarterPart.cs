@@ -18,29 +18,11 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
         {
             a = y;
             b = z;
-            var centroid = new LocalPoint2d()
+            ElasticCentroid = new LocalPoint2d()
             {
                 Y = corner.Y + 4.0 * a.Abs() / (3.0 * Math.PI) * (mirrorY ? -1 : 1),
                 Z = corner.Z + 4.0 * b.Abs() / (3.0 * Math.PI) * (mirrorZ ? -1 : 1),
             };
-
-            if (corner.Y.Value == 0)
-            {
-                centroid.Y = new Length(0, corner.Z.Unit);
-            }
-
-            if (corner.Z.Value == 0)
-            {
-                centroid.Z = new Length(0, corner.Y.Unit);
-            }
-
-            if (corner.Z.Value == 0 && corner.Y.Value == 0)
-            {
-                centroid.Y = new Length(0, a.Unit);
-                centroid.Z = new Length(0, a.Unit);
-            }
-
-            ElasticCentroid = centroid;
         }
 
         public OasysUnits.Area GetArea()

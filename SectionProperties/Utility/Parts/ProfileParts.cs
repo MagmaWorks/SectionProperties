@@ -25,7 +25,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                             (doubleAngle.BackToBackDistance + doubleAngle.WebThickness) / 2,
                             (doubleAngle.Height - doubleAngle.FlangeThickness) / 2 + doubleAngle.FlangeThickness)));
                     // left flange
-                    parts.Add(new TrapezoidalPart(doubleAngle.FlangeThickness, doubleAngle.Width,
+                    parts.Add(new TrapezoidalPart(doubleAngle.Width, doubleAngle.FlangeThickness,
                         new LocalPoint2d(
                             (-doubleAngle.BackToBackDistance - doubleAngle.Width) / 2,
                             doubleAngle.FlangeThickness / 2)));
@@ -137,7 +137,10 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                     parts.Add(new TrapezoidalPart(cruciform.Width, cruciform.FlangeThickness,
                         new LocalPoint2d()));
                     // web
-                    parts.Add(new TrapezoidalPart(cruciform.WebThickness, cruciform.Height - cruciform.FlangeThickness,
+                    parts.Add(new TrapezoidalPart(cruciform.WebThickness, cruciform.Height,
+                        new LocalPoint2d()));
+                    // negative overlap
+                    parts.Add(new TrapezoidalPart(-cruciform.WebThickness, cruciform.FlangeThickness,
                         new LocalPoint2d()));
                     return parts;
 

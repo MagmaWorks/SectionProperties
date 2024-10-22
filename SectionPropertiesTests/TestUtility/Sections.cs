@@ -71,8 +71,8 @@ namespace SectionPropertiesTests.TestUtility
         {
             var h = new Length(2.3, LengthUnit.Centimeter);
             var w = new Length(5.4, LengthUnit.Centimeter);
-            var webThk = new Length(10.9, LengthUnit.Millimeter);
             var flangeThk = new Length(15, LengthUnit.Millimeter);
+            var webThk = new Length(10.9, LengthUnit.Millimeter);
             ICruciform prfl = new Cruciform(h, w, flangeThk, webThk);
             return MockSection(prfl);
         }

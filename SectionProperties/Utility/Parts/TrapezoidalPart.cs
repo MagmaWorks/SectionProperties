@@ -17,30 +17,11 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
             b = y;
             a = y;
             h = z;
-
-            var centroid = new LocalPoint2d()
+            ElasticCentroid = new LocalPoint2d()
             {
                 Y = centre.Y,
                 Z = centre.Z,
             };
-
-            if (centre.Y.Value == 0)
-            {
-                centroid.Y = new Length(0, centre.Z.Unit);
-            }
-
-            if (centre.Z.Value == 0)
-            {
-                centroid.Z = new Length(0, centre.Y.Unit);
-            }
-
-            if (centre.Z.Value == 0 && centre.Y.Value == 0)
-            {
-                centroid.Y = new Length(0, b.Unit);
-                centroid.Z = new Length(0, b.Unit);
-            }
-
-            ElasticCentroid = centroid;
         }
 
         public TrapezoidalPart(Length yTop, Length yBottom, Length z, ILocalPoint2d midHeight)

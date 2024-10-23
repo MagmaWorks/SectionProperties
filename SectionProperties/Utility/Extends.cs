@@ -5,7 +5,7 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
-    public static class Domain
+    public static class Extends
     {
         public static ILocalDomain2d GetDomain(IProfile profile)
         {

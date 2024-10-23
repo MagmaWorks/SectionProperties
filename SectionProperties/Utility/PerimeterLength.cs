@@ -24,8 +24,8 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
         private static Length Distance(ILocalPoint2d p1, ILocalPoint2d p2)
         {
             LengthUnit unit = p1.Y.Unit;
-            double area = Math.Pow((p1.Y.As(unit) - p2.Y.As(unit)), 2)
-                        + Math.Pow((p1.Z.As(unit) - p2.Z.As(unit)), 2);
+            double area = Math.Pow(p1.Y.As(unit) - p2.Y.As(unit), 2)
+                        + Math.Pow(p1.Z.As(unit) - p2.Z.As(unit), 2);
             return new Length(Math.Sqrt(area), unit);
         }
     }

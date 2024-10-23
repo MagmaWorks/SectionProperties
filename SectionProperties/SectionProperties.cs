@@ -9,6 +9,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
     {
         public ILocalPoint2d Centroid => _centroid ??= Utility.Centroid.CalculateCentroid(_profile);
         public Length Perimeter => _perimeter ??= Utility.PerimeterLength.CalculatePerimeter(_profile);
+        public ILocalDomain2d Domain => throw new NotImplementedException();
         public Area Area => _area ??= Utility.Area.CalculateArea(_profile);
         public SectionModulus ElasticSectionModulusYy => throw new NotImplementedException();
         public SectionModulus ElasticSectionModulusZz => throw new NotImplementedException();
@@ -17,6 +18,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 
         private ILocalPoint2d _centroid;
         private Length? _perimeter;
+        private ILocalDomain2d _domain;
         private Area? _area;
         private SectionModulus? _elasticSectionModulusYy;
         private SectionModulus? _elasticSectionModulusZz;

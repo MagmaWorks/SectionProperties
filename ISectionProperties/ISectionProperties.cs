@@ -3,7 +3,8 @@ using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
-    public interface ISectionProperties {
+    public interface ISectionProperties
+    {
         ILocalPoint2d Centroid { get; }
         Length Perimeter { get; }
         Area Area { get; }

@@ -1,5 +1,4 @@
-﻿using System;
-using MagmaWorks.Geometry;
+﻿using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
 using OasysUnits;
 
@@ -9,12 +8,12 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
     {
         public ILocalPoint2d Centroid => _centroid ??= Utility.Centroid.CalculateCentroid(_profile);
         public Length Perimeter => _perimeter ??= Utility.PerimeterLength.CalculatePerimeter(_profile);
-        public ILocalDomain2d Domain => throw new NotImplementedException();
+        public ILocalDomain2d Extends => Utility.Extends.GetDomain(_profile);
         public Area Area => _area ??= Utility.Area.CalculateArea(_profile);
-        public SectionModulus ElasticSectionModulusYy => throw new NotImplementedException();
-        public SectionModulus ElasticSectionModulusZz => throw new NotImplementedException();
-        public AreaMomentOfInertia MomentOfInertiaYy => throw new NotImplementedException();
-        public AreaMomentOfInertia MomentOfInertiaZz => throw new NotImplementedException();
+        public SectionModulus ElasticSectionModulusYy => Utility.SectionModulus.CalculateSectionModulusYy(_profile);
+        public SectionModulus ElasticSectionModulusZz => Utility.SectionModulus.CalculateSectionModulusZz(_profile);
+        public AreaMomentOfInertia MomentOfInertiaYy => Utility.Inertia.CalculateInertiaYy(_profile);
+        public AreaMomentOfInertia MomentOfInertiaZz => Utility.Inertia.CalculateInertiaZz(_profile);
 
         private ILocalPoint2d _centroid;
         private Length? _perimeter;

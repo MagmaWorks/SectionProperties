@@ -10,7 +10,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
         {
             if (profile is IPerimeter perim)
             {
-                return Perimeter.CalculateArea(perim);
+                return PerimeterProfile.CalculateArea(perim);
             }
 
             List<IPart> parts = ProfileParts.GetParts(profile);

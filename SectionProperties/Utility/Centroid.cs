@@ -12,7 +12,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
         {
             if (profile is IPerimeter perim)
             {
-                return Perimeter.CalculateCentroid(perim);
+                return PerimeterProfile.CalculateCentroid(perim);
             }
 
             Volume qz = Volume.Zero;

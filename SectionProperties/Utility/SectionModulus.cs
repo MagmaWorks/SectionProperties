@@ -12,19 +12,20 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
         {
             ILocalPoint2d elasticCentroid = Centroid.CalculateCentroid(profile);
             ILocalDomain2d domain = Extends.GetDomain(profile);
-            return CalculateSectionModulus(profile, domain.Max.Z, domain.Min.Z, elasticCentroid.Z);
+            AreaMomentOfInertia inertia = Inertia.CalculateInertiaYy(profile);
+            return CalculateSectionModulus(domain.Max.Z, domain.Min.Z, elasticCentroid.Z, inertia);
         }
 
         public static OasysUnits.SectionModulus CalculateSectionModulusZz(IProfile profile)
         {
             ILocalPoint2d elasticCentroid = Centroid.CalculateCentroid(profile);
             ILocalDomain2d domain = Extends.GetDomain(profile);
-            return CalculateSectionModulus(profile, domain.Max.Y, domain.Min.Y, elasticCentroid.Y);
+            AreaMomentOfInertia inertia = Inertia.CalculateInertiaZz(profile);
+            return CalculateSectionModulus(domain.Max.Y, domain.Min.Y, elasticCentroid.Y, inertia);
         }
 
-        private static OasysUnits.SectionModulus CalculateSectionModulus(IProfile profile, Length dPos, Length dNeg, Length centroid)
+        private static OasysUnits.SectionModulus CalculateSectionModulus(Length dPos, Length dNeg, Length centroid, AreaMomentOfInertia inertia)
         {
-            AreaMomentOfInertia inertia = Inertia.CalculateInertiaYy(profile);
             Length zpos = Distance(dPos, centroid);
             Length zneg = Distance(dNeg, centroid);
             Length distance = zpos > zneg ? zpos : zneg;

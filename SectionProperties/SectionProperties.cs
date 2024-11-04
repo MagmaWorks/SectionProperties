@@ -10,6 +10,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
         private IGeometricalProperties _geometricalProperties;
         private IProfile _profile;
 
+        private SectionProperties() { }
         public SectionProperties(ISection section) : this(section.Profile) { }
 
         public SectionProperties(IProfile profile)

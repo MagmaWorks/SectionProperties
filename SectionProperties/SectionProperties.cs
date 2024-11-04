@@ -10,10 +10,12 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
         public Length Perimeter => _perimeter ??= Utility.PerimeterLength.CalculatePerimeter(_profile);
         public ILocalDomain2d Extends => Utility.Extends.GetDomain(_profile);
         public Area Area => _area ??= Utility.Area.CalculateArea(_profile);
-        public SectionModulus ElasticSectionModulusYy => Utility.SectionModulus.CalculateSectionModulusYy(_profile);
-        public SectionModulus ElasticSectionModulusZz => Utility.SectionModulus.CalculateSectionModulusZz(_profile);
-        public AreaMomentOfInertia MomentOfInertiaYy => Utility.Inertia.CalculateInertiaYy(_profile);
-        public AreaMomentOfInertia MomentOfInertiaZz => Utility.Inertia.CalculateInertiaZz(_profile);
+        public SectionModulus ElasticSectionModulusYy => _elasticSectionModulusYy ??= Utility.SectionModulus.CalculateSectionModulusYy(_profile);
+        public SectionModulus ElasticSectionModulusZz => _elasticSectionModulusZz ??= Utility.SectionModulus.CalculateSectionModulusZz(_profile);
+        public AreaMomentOfInertia MomentOfInertiaYy => _momentOfInertiaYy ??= Utility.Inertia.CalculateInertiaYy(_profile);
+        public AreaMomentOfInertia MomentOfInertiaZz => _momentOfInertiaZz ??= Utility.Inertia.CalculateInertiaZz(_profile);
+        public Length RadiusOfGyrationYy => _radiusOfGyrationYy ??= Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(_profile);
+        public Length RadiusOfGyrationZz => _radiusOfGyrationZz ??= Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(_profile);
 
         private ILocalPoint2d _centroid;
         private Length? _perimeter;
@@ -23,6 +25,8 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
         private SectionModulus? _elasticSectionModulusZz;
         private AreaMomentOfInertia? _momentOfInertiaYy;
         private AreaMomentOfInertia? _momentOfInertiaZz;
+        private Length? _radiusOfGyrationYy;
+        private Length? _radiusOfGyrationZz;
         private IProfile _profile;
 
         public SectionProperties(ISection section) : this(section.Profile) { }

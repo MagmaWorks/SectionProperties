@@ -13,5 +13,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
         SectionModulus ElasticSectionModulusZz { get; }
         AreaMomentOfInertia MomentOfInertiaYy { get; }
         AreaMomentOfInertia MomentOfInertiaZz { get; }
+        Length RadiusOfGyrationYy { get; }
+        Length RadiusOfGyrationZz { get; }
     }
 }

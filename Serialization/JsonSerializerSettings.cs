@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace MagmaWorks.Template.Serialization
+namespace MagmaWorks.Taxonomy.Serialization.Sections.SectionProperties
 {
-    public static class TemplateJsonSerializer
+    public static class SectionPropertiesJsonSerializer
     {
         public static JsonSerializerSettings Settings
         {

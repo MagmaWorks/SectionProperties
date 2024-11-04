@@ -7,7 +7,7 @@ using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
-    internal static class Perimeter
+    internal static class PerimeterProfile
     {
         internal static OasysUnits.Area CalculateArea(IPerimeter profile)
         {

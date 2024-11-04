@@ -1,29 +1,16 @@
-﻿using System;
-using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits;
+﻿using MagmaWorks.Taxonomy.Profiles;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
     public class SectionProperties : ISectionProperties
     {
-        public ILocalPoint2d Centroid => _centroid ??= Utility.Centroid.CalculateCentroid(_profile);
-        public Length Perimeter => _perimeter ??= Utility.PerimeterLength.CalculatePerimeter(_profile);
-        public Area Area => _area ??= Utility.Area.CalculateArea(_profile);
-        public SectionModulus ElasticSectionModulusYy => throw new NotImplementedException();
-        public SectionModulus ElasticSectionModulusZz => throw new NotImplementedException();
-        public AreaMomentOfInertia MomentOfInertiaYy => throw new NotImplementedException();
-        public AreaMomentOfInertia MomentOfInertiaZz => throw new NotImplementedException();
+        public IGeometricalProperties GeometricalProperties
+            => _geometricalProperties ??= new GeometricalProperties(_profile);
 
-        private ILocalPoint2d _centroid;
-        private Length? _perimeter;
-        private Area? _area;
-        private SectionModulus? _elasticSectionModulusYy;
-        private SectionModulus? _elasticSectionModulusZz;
-        private AreaMomentOfInertia? _momentOfInertiaYy;
-        private AreaMomentOfInertia? _momentOfInertiaZz;
+        private IGeometricalProperties _geometricalProperties;
         private IProfile _profile;
 
+        private SectionProperties() { }
         public SectionProperties(ISection section) : this(section.Profile) { }
 
         public SectionProperties(IProfile profile)

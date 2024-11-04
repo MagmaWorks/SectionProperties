@@ -10,7 +10,7 @@ namespace MagmaWorks.Taxonomy.Serialization.Sections.SectionProperties.Extension
             return JsonConvert.SerializeObject(sectionProperties, Formatting.Indented, SectionPropertiesJsonSerializer.Settings);
         }
 
-        public static T FromJson<T>(this string json) where T : ISectionProperties 
+        public static T FromJson<T>(this string json) where T : ISectionProperties
         {
             return JsonConvert.DeserializeObject<T>(json, SectionPropertiesJsonSerializer.Settings);
         }

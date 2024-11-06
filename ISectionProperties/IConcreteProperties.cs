@@ -4,12 +4,12 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
     public interface IConcreteProperties : ISectionProperties
     {
-        Length EffectiveDepthY { get; }
-        Length EffectiveDepthZ { get; }
-        Area CompressionReinforcementAreaY { get; }
-        Area CompressionReinforcementAreaZ { get; }
-        Area TensionReinforcementAreaY { get; }
-        Area TensionReinforcementAreaZ { get; }
+        Area ConcreteArea { get; }
+        Area LongitudinalReinforcementArea { get; }
         Area ShearReinforcementArea { get; }
+        IConcreteSectionProperties TensionNegativeYProperties { get; }
+        IConcreteSectionProperties TensionPositiveYProperties { get; }
+        IConcreteSectionProperties TensionNegativeZProperties { get; }
+        IConcreteSectionProperties TensionPositiveZProperties { get; }
     }
 }

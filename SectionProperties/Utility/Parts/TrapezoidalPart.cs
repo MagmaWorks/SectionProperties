@@ -94,7 +94,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
                 ? a.Abs() / 2 + ElasticCentroid.Y
                 : b.Abs() / 2 + ElasticCentroid.Y;
             Length minY = a.Abs() > b.Abs()
-                ? ElasticCentroid.Y - a.Abs() / 2 
+                ? ElasticCentroid.Y - a.Abs() / 2
                 : ElasticCentroid.Y - b.Abs() / 2;
             Length e = h / 3 * (a.Abs() + 2 * b.Abs()) / (a.Abs() + b.Abs());
             Length maxZ = ElasticCentroid.Z + h - e;

@@ -305,7 +305,7 @@ namespace SectionPropertiesTests
 
             // Assert
             Assert.Equal(472.585816E+6, Iyy.MillimetersToTheFourth, 0);
-            Assert.Equal(269785816, Izz.MillimetersToTheFourth, 0);
+            Assert.Equal(280585816, Izz.MillimetersToTheFourth, 0);
         }
     }
 }

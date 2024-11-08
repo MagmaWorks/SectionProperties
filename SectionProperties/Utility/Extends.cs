@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
+using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
 using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
@@ -114,11 +116,20 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             }
         }
 
-        private static LocalDomain2d CreateDomain(Length maxY, Length minY, Length maxZ, Length minZ)
+        internal static LocalDomain2d CreateDomain(Length maxY, Length minY, Length maxZ, Length minZ)
         {
             var max = new LocalPoint2d(maxY, maxZ);
             var min = new LocalPoint2d(minY, minZ);
             return new LocalDomain2d(max, min);
+        }
+
+        internal static ILocalDomain2d GetDomain(IList<IPart> parts)
+        {
+            Length maxY = parts.Select(p => p.Extends.Max.Y).Max();
+            Length minY = parts.Select(p => p.Extends.Min.Y).Min();
+            Length maxZ = parts.Select(p => p.Extends.Max.Z).Max();
+            Length minZ = parts.Select(p => p.Extends.Min.Z).Min();
+            return CreateDomain(maxY, minY, maxZ, minZ);
         }
     }
 }

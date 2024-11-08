@@ -23,8 +23,8 @@
 
   <ItemGroup>
     <PackageReference Include="MagmaWorks.Geometry" Version="0.0.7" />
-    <PackageReference Include="MagmaWorks.Taxonomy.ISections" Version="0.0.19" />
-    <PackageReference Include="MagmaWorks.Taxonomy.Profiles.Perimeter" Version="0.0.19" />
+    <PackageReference Include="MagmaWorks.Taxonomy.ISections" Version="0.0.22" />
+    <PackageReference Include="MagmaWorks.Taxonomy.Profiles.Perimeter" Version="0.0.22" />
     <PackageReference Include="MinVer" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -56,6 +56,12 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>SectionPropertiesTests</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
 
 </Project>

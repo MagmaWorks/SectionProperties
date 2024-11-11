@@ -10,6 +10,11 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
     {
         public static Length CalculateRadiusOfGyrationYy(IProfile profile)
         {
+            if (profile is IPerimeter perim)
+            {
+                return PerimeterProfile.CalculateRadiusOfGyrationYy(perim);
+            }
+
             return CalculateRadiusOfGyrationYy(ProfileParts.GetParts(profile));
         }
 
@@ -22,6 +27,11 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 
         public static Length CalculateRadiusOfGyrationZz(IProfile profile)
         {
+            if (profile is IPerimeter perim)
+            {
+                return PerimeterProfile.CalculateRadiusOfGyrationZz(perim);
+            }
+
             return CalculateRadiusOfGyrationZz(ProfileParts.GetParts(profile));
         }
 
@@ -32,8 +42,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             return CalculateRadiusOfGyration(area, inertia);
         }
 
-
-        private static Length CalculateRadiusOfGyration(OasysUnits.Area area, AreaMomentOfInertia inertia)
+        internal static Length CalculateRadiusOfGyration(OasysUnits.Area area, AreaMomentOfInertia inertia)
         {
             Length.TryParse($"0 {OasysUnits.Area.GetAbbreviation(area.Unit).Replace("²", string.Empty)}", out Length unit);
             OasysUnits.Area.TryParse($"0 {Length.GetAbbreviation(unit.Unit)}²", out OasysUnits.Area m2);

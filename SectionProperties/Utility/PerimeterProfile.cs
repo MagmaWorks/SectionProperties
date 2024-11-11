@@ -53,6 +53,20 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             };
         }
 
+        internal static Length CalculateRadiusOfGyrationYy(IPerimeter perimeter)
+        {
+            OasysUnits.Area area = CalculateArea(perimeter);
+            AreaMomentOfInertia inertia = CalculateInertiaYy(perimeter);
+            return RadiusOfGyration.CalculateRadiusOfGyration(area, inertia);
+        }
+
+        internal static Length CalculateRadiusOfGyrationZz(IPerimeter perimeter)
+        {
+            OasysUnits.Area area = CalculateArea(perimeter);
+            AreaMomentOfInertia inertia = CalculateInertiaZz(perimeter);
+            return RadiusOfGyration.CalculateRadiusOfGyration(area, inertia);
+        }
+
         internal static AreaMomentOfInertia CalculateInertiaYy(IPerimeter perimeter)
         {
             IPerimeter centredOnElasticCentroid = MoveToElasticCentroid(perimeter);

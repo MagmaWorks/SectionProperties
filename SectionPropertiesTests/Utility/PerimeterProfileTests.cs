@@ -6,6 +6,7 @@ using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 using OasysUnits;
 using SectionPropertiesTests.TestUtility;
+using Utility = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 
 namespace SectionPropertiesTests
 {
@@ -26,6 +27,52 @@ namespace SectionPropertiesTests
             // Assert
             Assert.Equal(0, newCentroid.Y.Value, 12);
             Assert.Equal(0, newCentroid.Z.Value, 12);
+        }
+
+        [Theory]
+        [ClassData(typeof(SectionGenerator))]
+        public void AreaTests(ISection section)
+        {
+            // skip back to back profiles as they do not convert to a single Perimeter profile
+            if (section.Profile is IBackToBack)
+            {
+                return;
+            }
+
+            // Assemble
+            OasysUnits.Area originalA = Utility.Area.CalculateArea(section.Profile);
+            IPerimeter perimeter = new Perimeter(section.Profile);
+
+            // Act
+            OasysUnits.Area area = Utility.Area.CalculateArea(perimeter);
+
+            // Assert
+            Assert.Equal(originalA.SquareCentimeters, area.SquareCentimeters, 0.05 * area.SquareCentimeters);
+        }
+
+
+        [Theory]
+        [ClassData(typeof(SectionGenerator))]
+        public void RadiusOfGyrationTests(ISection section)
+        {
+            // skip back to back profiles as they do not convert to a single Perimeter profile
+            if (section.Profile is IBackToBack)
+            {
+                return;
+            }
+
+            // Assemble
+            Length originalYy = RadiusOfGyration.CalculateRadiusOfGyrationYy(section.Profile);
+            Length originalZz = RadiusOfGyration.CalculateRadiusOfGyrationZz(section.Profile);
+            IPerimeter perimeter = new Perimeter(section.Profile);
+
+            // Act
+            Length radiusOfGyrationYy = RadiusOfGyration.CalculateRadiusOfGyrationYy(perimeter);
+            Length radiusOfGyrationZz = RadiusOfGyration.CalculateRadiusOfGyrationZz(perimeter);
+
+            // Assert
+            Assert.Equal(originalYy.Centimeters, radiusOfGyrationYy.Centimeters, 0.05 * radiusOfGyrationYy.Centimeters);
+            Assert.Equal(originalZz.Centimeters, radiusOfGyrationZz.Centimeters, 0.05 * radiusOfGyrationZz.Centimeters);
         }
 
         [Theory]

@@ -88,7 +88,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
 
         private void SetExtends(ILocalPoint2d corner, bool mirrorY = false, bool mirrorZ = false)
         {
-            
+
         }
     }
 }

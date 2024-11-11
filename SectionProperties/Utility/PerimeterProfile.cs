@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
+using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
 using OasysUnits;
 using OasysUnits.Units;
 
@@ -99,6 +100,22 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             }
 
             return inertia;
+        }
+
+        internal static OasysUnits.SectionModulus CalculateSectionModulusYy(IPerimeter perimeter)
+        {
+            ILocalPoint2d elasticCentroid = Centroid.CalculateCentroid(perimeter);
+            ILocalDomain2d domain = Extends.GetDomain(perimeter);
+            AreaMomentOfInertia inertia = Inertia.CalculateInertiaYy(perimeter);
+            return SectionModulus.CalculateSectionModulus(domain.Max.Z, domain.Min.Z, elasticCentroid.Z, inertia);
+        }
+
+        internal static OasysUnits.SectionModulus CalculateSectionModulusZz(IPerimeter perimeter)
+        {
+            ILocalPoint2d elasticCentroid = Centroid.CalculateCentroid(perimeter);
+            ILocalDomain2d domain = Extends.GetDomain(perimeter);
+            AreaMomentOfInertia inertia = Inertia.CalculateInertiaZz(perimeter);
+            return SectionModulus.CalculateSectionModulus(domain.Max.Y, domain.Min.Y, elasticCentroid.Y, inertia);
         }
 
         private static AreaMomentOfInertia CalculatePartInertiaYy(IList<ILocalPoint2d> p)

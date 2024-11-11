@@ -6,6 +6,7 @@ using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 using OasysUnits;
 using SectionPropertiesTests.TestUtility;
+using SectionModulus = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.SectionModulus;
 using Utility = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 
 namespace SectionPropertiesTests
@@ -97,6 +98,30 @@ namespace SectionPropertiesTests
             // Assert
             Assert.Equal(originalYy.CentimetersToTheFourth, inertiaYy.CentimetersToTheFourth, 0.05 * inertiaYy.CentimetersToTheFourth);
             Assert.Equal(originalZz.CentimetersToTheFourth, inertiaZz.CentimetersToTheFourth, 0.05 * inertiaZz.CentimetersToTheFourth);
+        }
+
+        [Theory]
+        [ClassData(typeof(SectionGenerator))]
+        public void SectionModulusTests(ISection section)
+        {
+            // skip back to back profiles as they do not convert to a single Perimeter profile
+            if (section.Profile is IBackToBack)
+            {
+                return;
+            }
+
+            // Assemble
+            OasysUnits.SectionModulus originalYy = SectionModulus.CalculateSectionModulusYy(section.Profile);
+            OasysUnits.SectionModulus originalZz = SectionModulus.CalculateSectionModulusZz(section.Profile);
+            IPerimeter perimeter = new Perimeter(section.Profile);
+
+            // Act
+            OasysUnits.SectionModulus inertiaYy = SectionModulus.CalculateSectionModulusYy(perimeter);
+            OasysUnits.SectionModulus inertiaZz = SectionModulus.CalculateSectionModulusZz(perimeter);
+
+            // Assert
+            Assert.Equal(originalYy.CubicCentimeters, inertiaYy.CubicCentimeters, 0.05 * inertiaYy.CubicCentimeters);
+            Assert.Equal(originalZz.CubicCentimeters, inertiaZz.CubicCentimeters, 0.05 * inertiaZz.CubicCentimeters);
         }
 
         public class SectionGenerator : IEnumerable<object[]>

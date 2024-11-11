@@ -12,6 +12,11 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
     {
         public static OasysUnits.SectionModulus CalculateSectionModulusYy(IProfile profile)
         {
+            if (profile is IPerimeter perim)
+            {
+                return PerimeterProfile.CalculateSectionModulusYy(perim);
+            }
+
             return CalculateSectionModulusYy(ProfileParts.GetParts(profile));
         }
 
@@ -25,6 +30,11 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 
         public static OasysUnits.SectionModulus CalculateSectionModulusZz(IProfile profile)
         {
+            if (profile is IPerimeter perim)
+            {
+                return PerimeterProfile.CalculateSectionModulusZz(perim);
+            }
+
             return CalculateSectionModulusZz(ProfileParts.GetParts(profile));
         }
 
@@ -36,7 +46,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             return CalculateSectionModulus(domain.Max.Y, domain.Min.Y, elasticCentroid.Y, inertia);
         }
 
-        private static OasysUnits.SectionModulus CalculateSectionModulus(Length dPos, Length dNeg, Length centroid, AreaMomentOfInertia inertia)
+        internal static OasysUnits.SectionModulus CalculateSectionModulus(Length dPos, Length dNeg, Length centroid, AreaMomentOfInertia inertia)
         {
             Length zpos = Distance(dPos, centroid);
             Length zneg = Distance(dNeg, centroid);

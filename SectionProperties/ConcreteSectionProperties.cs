@@ -1,22 +1,32 @@
-﻿using OasysUnits;
+﻿using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
+using OasysUnits;
+using OasysUnits.Units;
+using Area = OasysUnits.Area;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
     public class ConcreteSectionProperties : SectionProperties, IConcreteSectionProperties
     {
-        public Area TotalAreaOfReinforcement => throw new System.NotImplementedException();
-        public Area ConcreteArea => throw new System.NotImplementedException();
-        public Ratio GeometricReinforcementRatio => throw new System.NotImplementedException();
-        public Area ShearReinforcementArea => throw new System.NotImplementedException();
-        public Length ShearReinforcementSpacing => throw new System.NotImplementedException();
-        public AreaMomentOfInertia ReinforcementSecondMomentOfAreaYy => throw new System.NotImplementedException();
-        public AreaMomentOfInertia ReinforcementSecondMomentOfAreaZz => throw new System.NotImplementedException();
+        public Area ReinforcemenArea => _reinforcementArea ??= Reinforcement.CalculateArea(_section.Rebars);
+        public Area ConcreteArea => base.Area - ReinforcemenArea;
+        public Ratio GeometricReinforcementRatio =>
+            new Ratio(ConcreteArea.SquareMeters / ReinforcemenArea.SquareMeters, RatioUnit.DecimalFraction);
+        public Area ShearReinforcementArea => Reinforcement.CalculateArea(_section.Link) * 2;
+        public AreaMomentOfInertia ReinforcementSecondMomentOfAreaYy =>
+            _reinforcementSecondMomentOfAreaYy ??= Reinforcement.CalculateInertiaYy(_section);
+        public AreaMomentOfInertia ReinforcementSecondMomentOfAreaZz =>
+            _reinforcementSecondMomentOfAreaZz ??= Reinforcement.CalculateInertiaZz(_section);
         public Length ReinforcementRadiusOfGyrationYy => throw new System.NotImplementedException();
         public Length ReinforcementRadiusOfGyrationZz => throw new System.NotImplementedException();
 
-        private Area _concreteArea;
-        private Area _longitudinalReinforcementArea;
-        private Area _shearReinforcementArea;
+
+        private Area? _concreteArea;
+        private Area? _reinforcementArea;
+        private Area? _shearReinforcementArea;
+        private AreaMomentOfInertia? _reinforcementSecondMomentOfAreaYy;
+        private AreaMomentOfInertia? _reinforcementSecondMomentOfAreaZz;
+        private Length? _reinforcementRadiusOfGyrationYy;
+        private Length? _reinforcementRadiusOfGyrationZz;
         private IConcreteSection _section;
         private ConcreteSectionProperties() { }
 

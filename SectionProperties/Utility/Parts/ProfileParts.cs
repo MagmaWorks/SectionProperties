@@ -307,14 +307,6 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                             -z.Height / 2 + z.TopLip / 2)));
                     return parts;
 
-                //default:
-                //    {
-                //        IPerimeter perimeter = new Perimeter(profile);
-                //        // mesh the perimeter
-                //        // implement trianglepart
-                //        // add each triangle
-                //        return parts;
-                //    }
                 default:
                     throw new System.Exception($"Unable to get parts for unknown Profile type {profile.GetType()}");
             }

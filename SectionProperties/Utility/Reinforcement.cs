@@ -1,17 +1,30 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
 using OasysUnits;
 using OasysUnits.Units;
+using System.IO;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
     public static class Reinforcement
     {
+        private const double PiFactor = Math.PI / 4;
+
         public static OasysUnits.Area CalculateArea(IList<ILongitudinalReinforcement> rebars)
         {
-            return Area.CalculateArea(GetParts(rebars));
+            LengthUnit unit = rebars.FirstOrDefault().Rebar.Diameter.Unit;
+            double area = 0;
+            foreach(ILongitudinalReinforcement reinforcement in rebars)
+            {
+                area += PiFactor * Math.Pow(reinforcement.Rebar.Diameter.As(unit), 2);
+            }
+
+            OasysUnits.Area m2 = OasysUnits.Area.Zero;
+            OasysUnits.Area.TryParse($"0 {Length.GetAbbreviation(unit)}²", out m2);
+            return new OasysUnits.Area(area, m2.Unit);
         }
 
         public static OasysUnits.Area CalculateArea(IRebar rebar)
@@ -19,7 +32,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             LengthUnit unit = rebar.Diameter.Unit;
             OasysUnits.Area m2 = OasysUnits.Area.Zero;
             OasysUnits.Area.TryParse($"0 {Length.GetAbbreviation(unit)}²", out m2);
-            return new OasysUnits.Area(Math.PI / 4 * Math.Pow(rebar.Diameter.As(unit), 2), m2.Unit);
+            return new OasysUnits.Area(PiFactor * Math.Pow(rebar.Diameter.As(unit), 2), m2.Unit);
         }
 
         public static AreaMomentOfInertia CalculateInertiaYy(IConcreteSection section)
@@ -39,7 +52,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
         public static Length CalculateRadiusOfGyrationYy(IConcreteSection section)
         {
             OasysUnits.Area area = CalculateArea(section.Rebars);
-            AreaMomentOfInertia inertia = CalculateInertiaZz(section);
+            AreaMomentOfInertia inertia = CalculateInertiaYy(section);
             return RadiusOfGyration.CalculateRadiusOfGyration(area, inertia);
         }
 

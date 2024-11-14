@@ -1,9 +1,9 @@
 ﻿using MagmaWorks.Geometry;
+using MagmaWorks.Taxonomy.Materials;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections;
-using OasysUnits.Units;
 using OasysUnits;
-using MagmaWorks.Taxonomy.Materials;
+using OasysUnits.Units;
 
 namespace SectionPropertiesTests.TestUtility
 {
@@ -45,7 +45,7 @@ namespace SectionPropertiesTests.TestUtility
                 Rebar(20, 51.666667, -330),
                 Rebar(20, 200, -375, link, cover),
             };
-            
+
             return new ConcreteSection(material, profile, rebars, Bar(link), new Length(cover, unit));
         }
 

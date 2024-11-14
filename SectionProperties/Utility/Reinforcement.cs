@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
 using OasysUnits;
 using OasysUnits.Units;
-using System.IO;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
@@ -17,7 +17,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
         {
             LengthUnit unit = rebars.FirstOrDefault().Rebar.Diameter.Unit;
             double area = 0;
-            foreach(ILongitudinalReinforcement reinforcement in rebars)
+            foreach (ILongitudinalReinforcement reinforcement in rebars)
             {
                 area += PiFactor * Math.Pow(reinforcement.Rebar.Diameter.As(unit), 2);
             }

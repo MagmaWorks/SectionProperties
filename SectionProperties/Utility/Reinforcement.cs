@@ -1,9 +1,9 @@
-﻿using MagmaWorks.Geometry;
+﻿using System;
+using System.Collections.Generic;
+using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
 using OasysUnits;
 using OasysUnits.Units;
-using System;
-using System.Collections.Generic;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
@@ -34,6 +34,20 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             ILocalPoint2d concreteCentroid = Centroid.CalculateCentroid(section.Profile);
             List<IPart> rebars = GetParts(section.Rebars);
             return Inertia.CalculateInertiaZz(rebars, concreteCentroid);
+        }
+
+        public static Length CalculateRadiusOfGyrationYy(IConcreteSection section)
+        {
+            OasysUnits.Area area = CalculateArea(section.Rebars);
+            AreaMomentOfInertia inertia = CalculateInertiaZz(section);
+            return RadiusOfGyration.CalculateRadiusOfGyration(area, inertia);
+        }
+
+        public static Length CalculateRadiusOfGyrationZz(IConcreteSection section)
+        {
+            OasysUnits.Area area = CalculateArea(section.Rebars);
+            AreaMomentOfInertia inertia = CalculateInertiaZz(section);
+            return RadiusOfGyration.CalculateRadiusOfGyration(area, inertia);
         }
 
         private static List<IPart> GetParts(IList<ILongitudinalReinforcement> rebars)

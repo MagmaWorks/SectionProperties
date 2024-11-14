@@ -10,15 +10,16 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
         public Area ReinforcemenArea => _reinforcementArea ??= Reinforcement.CalculateArea(_section.Rebars);
         public Area ConcreteArea => base.Area - ReinforcemenArea;
         public Ratio GeometricReinforcementRatio =>
-            new Ratio(ConcreteArea.SquareMeters / ReinforcemenArea.SquareMeters, RatioUnit.DecimalFraction);
+            new Ratio(ReinforcemenArea.SquareMeters / ConcreteArea.SquareMeters, RatioUnit.DecimalFraction);
         public Area ShearReinforcementArea => Reinforcement.CalculateArea(_section.Link) * 2;
         public AreaMomentOfInertia ReinforcementSecondMomentOfAreaYy =>
             _reinforcementSecondMomentOfAreaYy ??= Reinforcement.CalculateInertiaYy(_section);
         public AreaMomentOfInertia ReinforcementSecondMomentOfAreaZz =>
             _reinforcementSecondMomentOfAreaZz ??= Reinforcement.CalculateInertiaZz(_section);
-        public Length ReinforcementRadiusOfGyrationYy => throw new System.NotImplementedException();
-        public Length ReinforcementRadiusOfGyrationZz => throw new System.NotImplementedException();
-
+        public Length ReinforcementRadiusOfGyrationYy =>
+            _reinforcementRadiusOfGyrationYy ??= Reinforcement.CalculateRadiusOfGyrationYy(_section);
+        public Length ReinforcementRadiusOfGyrationZz =>
+            _reinforcementRadiusOfGyrationZz ??= Reinforcement.CalculateRadiusOfGyrationZz(_section);
 
         private Area? _concreteArea;
         private Area? _reinforcementArea;

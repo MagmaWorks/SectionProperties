@@ -1,7 +1,7 @@
 ﻿using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits.Units;
 using OasysUnits;
+using OasysUnits.Units;
 
 namespace SectionPropertiesTests.TestUtility
 {

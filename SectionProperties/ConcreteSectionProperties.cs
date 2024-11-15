@@ -36,7 +36,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 
         public Length EffectiveDepth(SectionFace face)
             => Reinforcement.CalculateEffectiveDepth(_section, face);
-        public Area ReinforcementArea(SectionFace face) 
+        public Area ReinforcementArea(SectionFace face)
             => Reinforcement.CalculateArea(_section, face);
     }
 }

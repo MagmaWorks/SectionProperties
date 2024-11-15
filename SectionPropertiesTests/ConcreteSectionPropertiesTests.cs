@@ -1,5 +1,6 @@
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.SectionProperties;
+using OasysUnits;
 using SectionPropertiesTests.TestUtility;
 
 namespace SectionPropertiesTests
@@ -7,7 +8,7 @@ namespace SectionPropertiesTests
     public class ConcreteSectionPropertiesTests
     {
         [Fact]
-        public void ReinforcementAreaTest()
+        public void TotalReinforcementAreaTest()
         {
             // Assemble
             ConcreteSection setion = ConcreteSections.Perimeter();
@@ -18,7 +19,7 @@ namespace SectionPropertiesTests
             // Assert
             double expected = 2 * Math.PI / 4 * Math.Pow(12, 2)
                 + 4 * Math.PI / 4 * Math.Pow(20, 2);
-            Assert.Equal(expected, props.ReinforcemenArea.SquareMillimeters, 9);
+            Assert.Equal(expected, props.TotalReinforcemenArea.SquareMillimeters, 9);
         }
 
         [Fact]
@@ -65,7 +66,7 @@ namespace SectionPropertiesTests
 
             // Assert
             double expected = 2 * Math.PI / 4 * Math.Pow(10, 2);
-            Assert.Equal(expected, props.ShearReinforcementArea.SquareMillimeters, 9);
+            Assert.Equal(expected, props.CrossSectionalShearReinforcementArea.SquareMillimeters, 9);
         }
 
         [Fact]
@@ -142,6 +143,48 @@ namespace SectionPropertiesTests
             expected /= 2 * Math.PI / 4 * Math.Pow(12, 2)
                 + 4 * Math.PI / 4 * Math.Pow(20, 2);
             Assert.Equal(Math.Sqrt(expected), props.ReinforcementRadiusOfGyrationZz.Millimeters, 9);
+        }
+
+        [Theory]
+        [InlineData(750 / 2 + 330, SectionFace.Bottom)]
+        [InlineData(750 / 2 + 334, SectionFace.Top)]
+        [InlineData(311.824858898, SectionFace.RightSide)]
+        [InlineData(311.824858898, SectionFace.LeftSide)]
+        public void EffectiveDepthTest(double expected, SectionFace face)
+        {
+            // Assemble
+            ConcreteSection setion = ConcreteSections.Rectangle();
+
+            // Act
+            var props = new ConcreteSectionProperties(setion);
+            Length d = props.EffectiveDepth(face);
+
+            // Assert
+            Assert.Equal(expected, d.Millimeters, 9);
+        }
+
+        [Theory]
+        [InlineData(new double[] { 20, 20, 20, 20}, SectionFace.Bottom)]
+        [InlineData(new double[] { 12, 12 }, SectionFace.Top)]
+        [InlineData(new double[] { 12, 20, 20 }, SectionFace.RightSide)]
+        [InlineData(new double[] { 12, 20, 20 }, SectionFace.LeftSide)]
+        public void ReinforcementAreaTest(double[] expectedDiameters, SectionFace face)
+        {
+            // Assemble
+            ConcreteSection setion = ConcreteSections.Rectangle();
+
+            // Act
+            var props = new ConcreteSectionProperties(setion);
+            Area d = props.ReinforcementArea(face);
+
+            // Assert
+            double expected = 0;
+            foreach (double dia in expectedDiameters)
+            {
+                expected += Math.PI / 4 * Math.Pow(dia, 2);
+            }
+
+            Assert.Equal(expected, d.SquareMillimeters, 9);
         }
     }
 }

@@ -4,7 +4,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
     public interface IConcreteSectionProperties : ISectionProperties
     {
-        Area TotalReinforcemenArea { get; }
+        Area TotalReinforcementArea { get; }
         Area ConcreteArea { get; }
         Ratio GeometricReinforcementRatio { get; }
         Area CrossSectionalShearReinforcementArea { get; }

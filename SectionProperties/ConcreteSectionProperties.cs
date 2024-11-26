@@ -1,16 +1,17 @@
 ﻿using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
+using MagmaWorks.Taxonomy.Serialization;
 using OasysUnits;
 using OasysUnits.Units;
 using Area = OasysUnits.Area;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
-    public class ConcreteSectionProperties : SectionProperties, IConcreteSectionProperties
+    public class ConcreteSectionProperties : SectionProperties, IConcreteSectionProperties, ITaxonomySerializable
     {
-        public Area TotalReinforcemenArea => _reinforcementArea ??= Reinforcement.CalculateArea(_section.Rebars);
-        public Area ConcreteArea => base.Area - TotalReinforcemenArea;
+        public Area TotalReinforcementArea => _reinforcementArea ??= Reinforcement.CalculateArea(_section.Rebars);
+        public Area ConcreteArea => base.Area - TotalReinforcementArea;
         public Ratio GeometricReinforcementRatio =>
-            new Ratio(TotalReinforcemenArea.SquareMeters / ConcreteArea.SquareMeters, RatioUnit.DecimalFraction);
+            new Ratio(TotalReinforcementArea.SquareMeters / ConcreteArea.SquareMeters, RatioUnit.DecimalFraction);
         public Area CrossSectionalShearReinforcementArea => Reinforcement.CalculateArea(_section.Link) * 2;
         public AreaMomentOfInertia ReinforcementSecondMomentOfAreaYy =>
             _reinforcementSecondMomentOfAreaYy ??= Reinforcement.CalculateInertiaYy(_section);

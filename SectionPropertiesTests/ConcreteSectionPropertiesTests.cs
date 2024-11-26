@@ -19,7 +19,7 @@ namespace SectionPropertiesTests
             // Assert
             double expected = 2 * Math.PI / 4 * Math.Pow(12, 2)
                 + 4 * Math.PI / 4 * Math.Pow(20, 2);
-            Assert.Equal(expected, props.TotalReinforcemenArea.SquareMillimeters, 9);
+            Assert.Equal(expected, props.TotalReinforcementArea.SquareMillimeters, 9);
         }
 
         [Fact]

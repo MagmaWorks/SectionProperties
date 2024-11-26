@@ -18,14 +18,14 @@ namespace SectionPropertiesTests
             TestObjectsPropertiesAreNotNull(sectionProperties);
         }
 
-        //[Theory]
-        //[ClassData(typeof(SectionGenerator))]
-        //public void DeserializeTest(ISection section)
-        //{
-        //    ISectionProperties sectionProperties = new SectionProperties(section);
-        //    Assert.NotNull(sectionProperties);
-        //    TestObjectsSurvivesJsonRoundtrip(sectionProperties);
-        //}
+        [Theory]
+        [ClassData(typeof(SectionGenerator))]
+        public void DeserializeTest(ISection section)
+        {
+            ISectionProperties sectionProperties = new SectionProperties(section);
+            Assert.NotNull(sectionProperties);
+            TestObjectsSurvivesJsonRoundtrip(sectionProperties);
+        }
 
         public class SectionGenerator : IEnumerable<object[]>
         {

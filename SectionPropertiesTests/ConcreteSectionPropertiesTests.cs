@@ -164,7 +164,7 @@ namespace SectionPropertiesTests
         }
 
         [Theory]
-        [InlineData(new double[] { 20, 20, 20, 20}, SectionFace.Bottom)]
+        [InlineData(new double[] { 20, 20, 20, 20 }, SectionFace.Bottom)]
         [InlineData(new double[] { 12, 12 }, SectionFace.Top)]
         [InlineData(new double[] { 12, 20, 20 }, SectionFace.RightSide)]
         [InlineData(new double[] { 12, 20, 20 }, SectionFace.LeftSide)]

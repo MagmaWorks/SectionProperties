@@ -305,7 +305,7 @@ namespace SectionPropertiesTests
 
             // Assert
             Assert.Equal(2.146042E+6, Wyy.CubicMillimeters, 0);
-            Assert.Equal(1036789, Wzz.CubicMillimeters, 0);
+            Assert.Equal(1078294, Wzz.CubicMillimeters, 0);
         }
     }
 }

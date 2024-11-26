@@ -13,7 +13,11 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                 return PerimeterProfile.CalculateArea(perim);
             }
 
-            List<IPart> parts = ProfileParts.GetParts(profile);
+            return CalculateArea(ProfileParts.GetParts(profile));
+        }
+
+        internal static OasysUnits.Area CalculateArea(IList<IPart> parts)
+        {
             OasysUnits.Area area = OasysUnits.Area.Zero;
             foreach (IPart part in parts)
             {

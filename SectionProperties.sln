@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Section
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Sections.SectionProperties", "SectionProperties\MagmaWorks.Taxonomy.Sections.SectionProperties.csproj", "{53294695-E114-4DA9-9F1A-F8E2C289DB60}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagmaWorks.Taxonomy.Sections.SectionProperties.Serialization", "Serialization\MagmaWorks.Taxonomy.Sections.SectionProperties.Serialization.csproj", "{1E0D2D34-40B9-48C4-9A43-D8C078B2BCE4}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SectionPropertiesTests", "SectionPropertiesTests\SectionPropertiesTests.csproj", "{86D261B4-B15C-4F44-B655-CE127B7CC3C0}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{53294695-E114-4DA9-9F1A-F8E2C289DB60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53294695-E114-4DA9-9F1A-F8E2C289DB60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53294695-E114-4DA9-9F1A-F8E2C289DB60}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E0D2D34-40B9-48C4-9A43-D8C078B2BCE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E0D2D34-40B9-48C4-9A43-D8C078B2BCE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E0D2D34-40B9-48C4-9A43-D8C078B2BCE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E0D2D34-40B9-48C4-9A43-D8C078B2BCE4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{86D261B4-B15C-4F44-B655-CE127B7CC3C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{86D261B4-B15C-4F44-B655-CE127B7CC3C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86D261B4-B15C-4F44-B655-CE127B7CC3C0}.Release|Any CPU.ActiveCfg = Release|Any CPU

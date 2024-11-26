@@ -10,7 +10,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
     {
         public static Length CalculatePerimeter(IProfile profile)
         {
-            IPerimeter perimeter = new Profiles.Perimeter(profile);
+            IPerimeter perimeter = new Perimeter(profile);
             Length length = Length.Zero;
             for (int i = 0; i < perimeter.OuterEdge.Points.Count - 1; i++)
             {

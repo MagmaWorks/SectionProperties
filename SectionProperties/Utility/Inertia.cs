@@ -12,8 +12,17 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
     {
         public static AreaMomentOfInertia CalculateInertiaYy(IProfile profile)
         {
-            List<IPart> parts = ProfileParts.GetParts(profile);
-            ILocalPoint2d elasticCentroid = Centroid.CalculateCentroid(profile);
+            if (profile is IPerimeter perim)
+            {
+                return PerimeterProfile.CalculateInertiaYy(perim);
+            }
+
+            return CalculateInertiaYy(ProfileParts.GetParts(profile));
+        }
+
+        internal static AreaMomentOfInertia CalculateInertiaYy(IList<IPart> parts, ILocalPoint2d elasticCentroid = null)
+        {
+            elasticCentroid ??= Centroid.CalculateCentroid(parts);
             AreaMomentOfInertia inertia = AreaMomentOfInertia.Zero;
             foreach (IPart part in parts)
             {
@@ -26,8 +35,17 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 
         public static AreaMomentOfInertia CalculateInertiaZz(IProfile profile)
         {
-            List<IPart> parts = ProfileParts.GetParts(profile);
-            ILocalPoint2d elasticCentroid = Centroid.CalculateCentroid(profile);
+            if (profile is IPerimeter perim)
+            {
+                return PerimeterProfile.CalculateInertiaZz(perim);
+            }
+
+            return CalculateInertiaZz(ProfileParts.GetParts(profile));
+        }
+
+        internal static AreaMomentOfInertia CalculateInertiaZz(IList<IPart> parts, ILocalPoint2d elasticCentroid = null)
+        {
+            elasticCentroid ??= Centroid.CalculateCentroid(parts);
             AreaMomentOfInertia inertia = AreaMomentOfInertia.Zero;
             foreach (IPart part in parts)
             {

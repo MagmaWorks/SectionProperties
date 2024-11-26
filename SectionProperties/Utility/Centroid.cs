@@ -15,9 +15,13 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                 return PerimeterProfile.CalculateCentroid(perim);
             }
 
+            return CalculateCentroid(ProfileParts.GetParts(profile));
+        }
+
+        internal static ILocalPoint2d CalculateCentroid(IList<IPart> parts)
+        {
             Volume qz = Volume.Zero;
             Volume qy = Volume.Zero;
-            List<IPart> parts = ProfileParts.GetParts(profile);
             OasysUnits.Area area = OasysUnits.Area.Zero;
             foreach (IPart part in parts)
             {

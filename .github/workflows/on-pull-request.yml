@@ -10,5 +10,4 @@ jobs:
   pr-ci:
     uses: magmaworks/actions/.github/workflows/on-pull-request.yml@codecov
     with:
-      lint: true
       codecov: true

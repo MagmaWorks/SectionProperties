@@ -37,8 +37,6 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
         private Length? _radiusOfGyrationZz;
         private IProfile _profile;
 
-        internal SectionProperties() { }
-
         public SectionProperties(ISection section) : this(section.Profile) { }
 
         public SectionProperties(IProfile profile)

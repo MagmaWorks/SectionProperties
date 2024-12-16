@@ -26,7 +26,6 @@
   <ItemGroup>
     <ProjectReference Include="..\SectionProperties\MagmaWorks.Taxonomy.Sections.SectionProperties.csproj" />
     <ProjectReference Include="..\ISectionProperties\MagmaWorks.Taxonomy.Sections.ISectionProperties.csproj" />
-    <ProjectReference Include="..\Serialization\MagmaWorks.Taxonomy.Sections.SectionProperties.Serialization.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,10 @@
 ﻿using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Serialization;
 using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
-    public class SectionProperties : ISectionProperties, ITaxonomySerializable
+    public class SectionProperties : ISectionProperties
     {
         public ILocalPoint2d Centroid
             => _centroid ??= Utility.Centroid.CalculateCentroid(_profile);

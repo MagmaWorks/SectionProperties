@@ -2,7 +2,6 @@ using System.Collections;
 using System.Reflection;
 using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.SectionProperties;
-using MagmaWorks.Taxonomy.Serialization.Sections.SectionProperties.Extensions;
 using SectionPropertiesTests.TestUtility;
 
 namespace SectionPropertiesTests

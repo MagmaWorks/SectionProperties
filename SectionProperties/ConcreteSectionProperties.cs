@@ -1,12 +1,11 @@
 ﻿using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
-using MagmaWorks.Taxonomy.Serialization;
 using OasysUnits;
 using OasysUnits.Units;
 using Area = OasysUnits.Area;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
-    public class ConcreteSectionProperties : SectionProperties, IConcreteSectionProperties, ITaxonomySerializable
+    public class ConcreteSectionProperties : SectionProperties, IConcreteSectionProperties
     {
         public Area TotalReinforcementArea => _reinforcementArea ??= Rebar.CalculateArea(_section.Rebars);
         public Area ConcreteArea => base.Area - TotalReinforcementArea;

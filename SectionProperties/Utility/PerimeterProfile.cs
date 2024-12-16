@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
@@ -9,24 +10,24 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
     internal static class PerimeterProfile
     {
-        internal static OasysUnits.Area CalculateArea(IPerimeter profile)
+        internal static OasysUnits.Area CalculateArea(IPerimeter perimeter)
         {
-            IPerimeter perimeter = new Profiles.Perimeter(profile);
             OasysUnits.Area area = CalculatePartArea(perimeter.OuterEdge.Points);
-            if (perimeter.VoidEdges != null)
+            if (perimeter.VoidEdges == null || perimeter.VoidEdges.Count == 0)
             {
-                foreach (ILocalPolygon2d hole in perimeter.VoidEdges)
-                {
-                    area -= CalculatePartArea(hole.Points);
-                }
+                return area;
+            }
+
+            foreach (ILocalPolyline2d hole in perimeter.VoidEdges)
+            {
+                area -= CalculatePartArea(hole.Points);
             }
 
             return area;
         }
 
-        internal static ILocalPoint2d CalculateCentroid(IPerimeter profile)
+        internal static ILocalPoint2d CalculateCentroid(IPerimeter perimeter)
         {
-            IPerimeter perimeter = new Profiles.Perimeter(profile);
             if (perimeter.VoidEdges == null || perimeter.VoidEdges.Count == 0)
             {
                 return CalculatePartCentroid(perimeter.OuterEdge.Points);
@@ -36,7 +37,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             ILocalPoint2d edgeCentroid = CalculatePartCentroid(perimeter.OuterEdge.Points);
             Volume qz = edgeArea * edgeCentroid.Y;
             Volume qy = edgeArea * edgeCentroid.Z;
-            foreach (ILocalPolygon2d hole in perimeter.VoidEdges)
+            foreach (ILocalPolyline2d hole in perimeter.VoidEdges)
             {
                 OasysUnits.Area holeArea = CalculatePartArea(hole.Points);
                 ILocalPoint2d holeCentroid = CalculatePartCentroid(hole.Points);
@@ -49,6 +50,147 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             {
                 Y = qz / edgeArea,
                 Z = qy / edgeArea,
+            };
+        }
+
+        internal static Length CalculateRadiusOfGyrationYy(IPerimeter perimeter)
+        {
+            OasysUnits.Area area = CalculateArea(perimeter);
+            AreaMomentOfInertia inertia = CalculateInertiaYy(perimeter);
+            return RadiusOfGyration.CalculateRadiusOfGyration(area, inertia);
+        }
+
+        internal static Length CalculateRadiusOfGyrationZz(IPerimeter perimeter)
+        {
+            OasysUnits.Area area = CalculateArea(perimeter);
+            AreaMomentOfInertia inertia = CalculateInertiaZz(perimeter);
+            return RadiusOfGyration.CalculateRadiusOfGyration(area, inertia);
+        }
+
+        internal static AreaMomentOfInertia CalculateInertiaYy(IPerimeter perimeter)
+        {
+            IPerimeter centredOnElasticCentroid = MoveToElasticCentroid(perimeter);
+            AreaMomentOfInertia inertia = CalculatePartInertiaYy(centredOnElasticCentroid.OuterEdge.Points);
+            if (centredOnElasticCentroid.VoidEdges == null || centredOnElasticCentroid.VoidEdges.Count == 0)
+            {
+                return inertia;
+            }
+
+            foreach (ILocalPolyline2d hole in centredOnElasticCentroid.VoidEdges)
+            {
+                inertia -= CalculatePartInertiaYy(hole.Points);
+            }
+
+            return inertia;
+        }
+
+        internal static AreaMomentOfInertia CalculateInertiaZz(IPerimeter perimeter)
+        {
+            IPerimeter centredOnElasticCentroid = MoveToElasticCentroid(perimeter);
+            AreaMomentOfInertia inertia = CalculatePartInertiaZz(centredOnElasticCentroid.OuterEdge.Points);
+            if (centredOnElasticCentroid.VoidEdges == null || centredOnElasticCentroid.VoidEdges.Count == 0)
+            {
+                return inertia;
+            }
+
+            foreach (ILocalPolyline2d hole in centredOnElasticCentroid.VoidEdges)
+            {
+                inertia -= CalculatePartInertiaZz(hole.Points);
+            }
+
+            return inertia;
+        }
+
+        internal static OasysUnits.SectionModulus CalculateSectionModulusYy(IPerimeter perimeter)
+        {
+            ILocalPoint2d elasticCentroid = Centroid.CalculateCentroid(perimeter);
+            ILocalDomain2d domain = Extends.GetDomain(perimeter);
+            AreaMomentOfInertia inertia = Inertia.CalculateInertiaYy(perimeter);
+            return SectionModulus.CalculateSectionModulus(domain.Max.Z, domain.Min.Z, elasticCentroid.Z, inertia);
+        }
+
+        internal static OasysUnits.SectionModulus CalculateSectionModulusZz(IPerimeter perimeter)
+        {
+            ILocalPoint2d elasticCentroid = Centroid.CalculateCentroid(perimeter);
+            ILocalDomain2d domain = Extends.GetDomain(perimeter);
+            AreaMomentOfInertia inertia = Inertia.CalculateInertiaZz(perimeter);
+            return SectionModulus.CalculateSectionModulus(domain.Max.Y, domain.Min.Y, elasticCentroid.Y, inertia);
+        }
+
+        private static AreaMomentOfInertia CalculatePartInertiaYy(IList<ILocalPoint2d> p)
+        {
+            double inertia = 0;
+            LengthUnit unit = p.FirstOrDefault().Z.Unit;
+            for (int i = 0; i < p.Count - 1; i++)
+            {
+                inertia += (p[i].Y.As(unit) * p[i + 1].Z.As(unit) - p[i + 1].Y.As(unit) * p[i].Z.As(unit))
+                    * (Math.Pow(p[i].Z.As(unit), 2) + p[i].Z.As(unit) * p[i + 1].Z.As(unit) + Math.Pow(p[i + 1].Z.As(unit), 2));
+            }
+
+            inertia = Math.Abs(inertia) / 12;
+            AreaMomentOfInertia m4 = AreaMomentOfInertia.Zero;
+            AreaMomentOfInertia.TryParse($"0 {Length.GetAbbreviation(unit)}⁴", out m4);
+            return new AreaMomentOfInertia(inertia, m4.Unit);
+        }
+
+        private static AreaMomentOfInertia CalculatePartInertiaZz(IList<ILocalPoint2d> p)
+        {
+            double inertia = 0;
+            LengthUnit unit = p.FirstOrDefault().Y.Unit;
+            for (int i = 0; i < p.Count - 1; i++)
+            {
+                inertia += (p[i].Y.As(unit) * p[i + 1].Z.As(unit) - p[i + 1].Y.As(unit) * p[i].Z.As(unit))
+                    * (Math.Pow(p[i].Y.As(unit), 2) + p[i].Y.As(unit) * p[i + 1].Y.As(unit) + Math.Pow(p[i + 1].Y.As(unit), 2));
+            }
+
+            inertia = Math.Abs(inertia) / 12;
+            AreaMomentOfInertia m4 = AreaMomentOfInertia.Zero;
+            AreaMomentOfInertia.TryParse($"0 {Length.GetAbbreviation(unit)}⁴", out m4);
+            return new AreaMomentOfInertia(inertia, m4.Unit);
+        }
+
+        internal static IPerimeter MoveToElasticCentroid(IPerimeter perimeter)
+        {
+            ILocalPoint2d centroid = CalculateCentroid(perimeter);
+            ILocalPoint2d translation = new LocalPoint2d()
+            {
+                Y = centroid.Y * -1,
+                Z = centroid.Z * -1
+            };
+
+            IList<ILocalPoint2d> outerPoints = new List<ILocalPoint2d>();
+            foreach (ILocalPoint2d pt in perimeter.OuterEdge.Points)
+            {
+                outerPoints.Add(Move(pt, translation));
+            }
+            ILocalPolyline2d outerEdge = new LocalPolyline2d(outerPoints);
+
+            if (perimeter.VoidEdges == null || perimeter.VoidEdges.Count == 0)
+            {
+                return new Perimeter(outerEdge);
+            }
+
+            IList<ILocalPolyline2d> voidEdges = new List<ILocalPolyline2d>();
+            foreach (ILocalPolyline2d voidEdge in perimeter.VoidEdges)
+            {
+                IList<ILocalPoint2d> voidPoints = new List<ILocalPoint2d>();
+                foreach (ILocalPoint2d pt in voidEdge.Points)
+                {
+                    voidPoints.Add(Move(pt, translation));
+                }
+                ILocalPolyline2d translatedVoidEdge = new LocalPolyline2d(voidPoints);
+                voidEdges.Add(translatedVoidEdge);
+            }
+
+            return new Perimeter(outerEdge, voidEdges);
+        }
+
+        private static ILocalPoint2d Move(ILocalPoint2d point, ILocalPoint2d translation)
+        {
+            return new LocalPoint2d()
+            {
+                Y = point.Y + translation.Y,
+                Z = point.Z + translation.Z,
             };
         }
 

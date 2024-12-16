@@ -285,7 +285,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                     // top lip
                     parts.Add(new TrapezoidalPart(z.Thickness, z.TopLip,
                         new LocalPoint2d(
-                            z.TopFlangeWidth - 1.5 * z.Thickness,
+                            z.TopFlangeWidth - z.Thickness,
                             z.Height / 2 - z.TopLip / 2)));
                     // top flange
                     parts.Add(new TrapezoidalPart(z.TopFlangeWidth - z.Thickness, z.Thickness,
@@ -303,18 +303,10 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                     // bottom lip
                     parts.Add(new TrapezoidalPart(z.Thickness, z.BottomLip,
                         new LocalPoint2d(
-                            -z.BottomFlangeWidth + 1.5 * z.Thickness,
+                            -z.BottomFlangeWidth + z.Thickness,
                             -z.Height / 2 + z.TopLip / 2)));
                     return parts;
 
-                //default:
-                //    {
-                //        IPerimeter perimeter = new Perimeter(profile);
-                //        // mesh the perimeter
-                //        // implement trianglepart
-                //        // add each triangle
-                //        return parts;
-                //    }
                 default:
                     throw new System.Exception($"Unable to get parts for unknown Profile type {profile.GetType()}");
             }

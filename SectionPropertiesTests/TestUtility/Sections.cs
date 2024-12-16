@@ -15,6 +15,7 @@ namespace SectionPropertiesTests.TestUtility
         public Length Width => new Length(300, LengthUnit.Millimeter);
         public Length FlangeThickness => new Length(28, LengthUnit.Millimeter);
         public Length WebThickness => new Length(14.5, LengthUnit.Millimeter);
+        public string Description => "HE500B";
 
         public MockHEB500() { }
     }
@@ -115,7 +116,7 @@ namespace SectionPropertiesTests.TestUtility
         {
             var h = new Length(12, LengthUnit.Centimeter);
             var w = new Length(18, LengthUnit.Centimeter);
-            IEllipse prfl = new Ellipse(h, w);
+            IEllipse prfl = new Ellipse(w, h);
             return MockSection(prfl);
         }
 
@@ -124,7 +125,7 @@ namespace SectionPropertiesTests.TestUtility
             var h = new Length(12, LengthUnit.Centimeter);
             var w = new Length(18, LengthUnit.Centimeter);
             var thk = new Length(14.3, LengthUnit.Millimeter);
-            IEllipseHollow prfl = new EllipseHollow(h, w, thk);
+            IEllipseHollow prfl = new EllipseHollow(w, h, thk);
             return MockSection(prfl);
         }
 
@@ -148,7 +149,7 @@ namespace SectionPropertiesTests.TestUtility
         {
             var h = new Length(2.3, LengthUnit.Centimeter);
             var w = new Length(5.4, LengthUnit.Centimeter);
-            IRectangle prfl = new Rectangle(h, w);
+            IRectangle prfl = new Rectangle(w, h);
             return MockSection(prfl);
         }
 
@@ -157,7 +158,7 @@ namespace SectionPropertiesTests.TestUtility
             var h = new Length(20.3, LengthUnit.Centimeter);
             var w = new Length(50.4, LengthUnit.Centimeter);
             var thk = new Length(10.9, LengthUnit.Millimeter);
-            IRectangularHollow prfl = new RectangularHollow(h, w, thk);
+            IRectangularHollow prfl = new RectangularHollow(w, h, thk);
             return MockSection(prfl);
         }
 
@@ -167,7 +168,7 @@ namespace SectionPropertiesTests.TestUtility
             var w = new Length(20, LengthUnit.Centimeter);
             var h1 = new Length(20, LengthUnit.Centimeter);
             var w1 = new Length(10, LengthUnit.Centimeter);
-            IRoundedRectangle prfl = new RoundedRectangle(h, w, h1, w1);
+            IRoundedRectangle prfl = new RoundedRectangle(w, h, w1, h1);
             return MockSection(prfl);
         }
 
@@ -178,7 +179,7 @@ namespace SectionPropertiesTests.TestUtility
             var h1 = new Length(30, LengthUnit.Centimeter);
             var w1 = new Length(50, LengthUnit.Centimeter);
             var thk = new Length(5.5, LengthUnit.Millimeter);
-            IRoundedRectangularHollow prfl = new RoundedRectangularHollow(h, w, h1, w1, thk);
+            IRoundedRectangularHollow prfl = new RoundedRectangularHollow(w, h, w1, h1, thk);
             return MockSection(prfl);
         }
 
@@ -197,7 +198,7 @@ namespace SectionPropertiesTests.TestUtility
             var h = new Length(200.3, LengthUnit.Millimeter);
             var wTop = new Length(100.4, LengthUnit.Millimeter);
             var wBottom = new Length(150.4, LengthUnit.Millimeter);
-            ITrapezoid prfl = new Trapezoid(h, wTop, wBottom);
+            ITrapezoid prfl = new Trapezoid(wTop, wBottom, h);
             return MockSection(prfl);
         }
 
@@ -216,7 +217,7 @@ namespace SectionPropertiesTests.TestUtility
         public static ISection PerimeterVoided()
         {
             LengthUnit unit = LengthUnit.Centimeter;
-            var solidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var solidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(-8, unit), Z = new Length(-5, unit)},
                 new LocalPoint2d() { Y = new Length(-8, unit), Z = new Length(6, unit)},
@@ -224,7 +225,7 @@ namespace SectionPropertiesTests.TestUtility
                 new LocalPoint2d() { Y = new Length(8, unit), Z = new Length(-5, unit)},
                 new LocalPoint2d() { Y = new Length(-8, unit), Z = new Length(-5, unit)},
             });
-            var voidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var voidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(-7, unit), Z = new Length(5, unit)},
                 new LocalPoint2d() { Y = new Length(7, unit), Z = new Length(5, unit)},
@@ -233,14 +234,14 @@ namespace SectionPropertiesTests.TestUtility
                 new LocalPoint2d() { Y = new Length(-7, unit), Z = new Length(5, unit)},
             });
 
-            IPerimeter profile = new Perimeter(solidEdge, new List<ILocalPolygon2d>() { voidEdge });
+            IPerimeter profile = new Perimeter(solidEdge, new List<ILocalPolyline2d>() { voidEdge });
             return MockSection(profile);
         }
 
         public static ISection Perimeter()
         {
             LengthUnit unit = LengthUnit.Millimeter;
-            var solidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var solidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(-650, unit), Z = new Length(200, unit)},
                 new LocalPoint2d() { Y = new Length(650, unit), Z = new Length(200, unit)},
@@ -262,7 +263,7 @@ namespace SectionPropertiesTests.TestUtility
         public static ISection CreateRectangleShaped()
         {
             LengthUnit unit = LengthUnit.Millimeter;
-            var solidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var solidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(-50, unit), Z = new Length(-250, unit)},
                 new LocalPoint2d() { Y = new Length(50, unit), Z = new Length(-250, unit)},
@@ -278,7 +279,7 @@ namespace SectionPropertiesTests.TestUtility
         public static ISection CreateZShaped()
         {
             LengthUnit unit = LengthUnit.Meter;
-            var solidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var solidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(0.75, unit), Z = new Length(0, unit)},
                 new LocalPoint2d() { Y = new Length(2, unit), Z = new Length(0, unit)},
@@ -298,7 +299,7 @@ namespace SectionPropertiesTests.TestUtility
         private static ISection MockSection<T>(T profile) where T : IProfile
         {
             IMaterial material = new MockMaterial();
-            return new Section(material, profile);
+            return new Section(profile, material);
         }
     }
 }

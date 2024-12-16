@@ -1,5 +1,4 @@
-﻿using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Profiles;
+﻿using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 using OasysUnits;
 

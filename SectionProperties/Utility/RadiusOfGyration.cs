@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using MagmaWorks.Taxonomy.Profiles;
+using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
 using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
@@ -8,19 +10,39 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
     {
         public static Length CalculateRadiusOfGyrationYy(IProfile profile)
         {
-            OasysUnits.Area area = Area.CalculateArea(profile);
-            AreaMomentOfInertia inertia = Inertia.CalculateInertiaYy(profile);
+            if (profile is IPerimeter perim)
+            {
+                return PerimeterProfile.CalculateRadiusOfGyrationYy(perim);
+            }
+
+            return CalculateRadiusOfGyrationYy(ProfileParts.GetParts(profile));
+        }
+
+        internal static Length CalculateRadiusOfGyrationYy(IList<IPart> parts)
+        {
+            OasysUnits.Area area = Area.CalculateArea(parts);
+            AreaMomentOfInertia inertia = Inertia.CalculateInertiaYy(parts);
             return CalculateRadiusOfGyration(area, inertia);
         }
 
         public static Length CalculateRadiusOfGyrationZz(IProfile profile)
         {
-            OasysUnits.Area area = Area.CalculateArea(profile);
-            AreaMomentOfInertia inertia = Inertia.CalculateInertiaZz(profile);
+            if (profile is IPerimeter perim)
+            {
+                return PerimeterProfile.CalculateRadiusOfGyrationZz(perim);
+            }
+
+            return CalculateRadiusOfGyrationZz(ProfileParts.GetParts(profile));
+        }
+
+        internal static Length CalculateRadiusOfGyrationZz(IList<IPart> parts)
+        {
+            OasysUnits.Area area = Area.CalculateArea(parts);
+            AreaMomentOfInertia inertia = Inertia.CalculateInertiaZz(parts);
             return CalculateRadiusOfGyration(area, inertia);
         }
 
-        private static Length CalculateRadiusOfGyration(OasysUnits.Area area, AreaMomentOfInertia inertia)
+        internal static Length CalculateRadiusOfGyration(OasysUnits.Area area, AreaMomentOfInertia inertia)
         {
             Length.TryParse($"0 {OasysUnits.Area.GetAbbreviation(area.Unit).Replace("²", string.Empty)}", out Length unit);
             OasysUnits.Area.TryParse($"0 {Length.GetAbbreviation(unit.Unit)}²", out OasysUnits.Area m2);

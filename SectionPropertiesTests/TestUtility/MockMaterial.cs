@@ -4,8 +4,11 @@ namespace SectionPropertiesTests.TestUtility
 {
     internal class MockMaterial : IMaterial
     {
-        public MaterialType Type => MaterialType.Generic;
+        public MaterialType Type { get; set; }
 
-        public MockMaterial() { }
+        public MockMaterial(MaterialType type = MaterialType.Generic)
+        {
+            Type = type;
+        }
     }
 }

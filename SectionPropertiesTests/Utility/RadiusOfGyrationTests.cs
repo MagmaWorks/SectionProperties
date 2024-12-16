@@ -303,7 +303,7 @@ namespace SectionPropertiesTests
 
             // Assert
             Assert.Equal(158.548, Ryy.Millimeters, 3);
-            Assert.Equal(119.793, Rzz.Millimeters, 3);
+            Assert.Equal(122.167, Rzz.Millimeters, 3);
         }
     }
 }

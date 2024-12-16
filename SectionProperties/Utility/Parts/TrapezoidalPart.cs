@@ -11,6 +11,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
         public Length a { get; }
         public Length h { get; }
         public ILocalPoint2d ElasticCentroid { get; }
+        public ILocalDomain2d Extends => GetExtends();
 
         public TrapezoidalPart(Length y, Length z, ILocalPoint2d centre)
         {
@@ -29,7 +30,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
             b = yTop;
             a = yBottom;
             h = z;
-            Length e = h / 3 * (a + 2 * b) / (a + b);
+            Length e = h / 3 * (a.Abs() + 2 * b.Abs()) / (a.Abs() + b.Abs());
 
             var centroid = new LocalPoint2d()
             {
@@ -85,6 +86,20 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
                 : new AreaMomentOfInertia(
                 h.As(unit) * (Math.Pow(a.As(unit), 4) - Math.Pow(b.As(unit), 4))
                 / (48 * (a.As(unit) - b.As(unit))), res.Unit);
+        }
+
+        private ILocalDomain2d GetExtends()
+        {
+            Length maxY = a.Abs() > b.Abs()
+                ? a.Abs() / 2 + ElasticCentroid.Y
+                : b.Abs() / 2 + ElasticCentroid.Y;
+            Length minY = a.Abs() > b.Abs()
+                ? ElasticCentroid.Y - a.Abs() / 2
+                : ElasticCentroid.Y - b.Abs() / 2;
+            Length e = h / 3 * (a.Abs() + 2 * b.Abs()) / (a.Abs() + b.Abs());
+            Length maxZ = ElasticCentroid.Z + h - e;
+            Length minZ = ElasticCentroid.Z - e;
+            return Utility.Extends.CreateDomain(maxY, minY, maxZ, minZ);
         }
     }
 }

@@ -1,5 +1,5 @@
-# Template-Repo
-A template for small repository with pipelines
+# Section Properties
+A library to calculate structural engineering section properties, both geometrical properties and material specific properties.
 
 ![GitHub Actions Workflow Status](https://github.com/MagmaWorks/Template-Repo/actions/workflows/on-merge-to-main.yml/badge.svg) 
 [![codecov](https://codecov.io/gh/MagmaWorks/SectionProperties/graph/badge.svg?token=NNGJVNILV1)](https://codecov.io/gh/MagmaWorks/SectionProperties)

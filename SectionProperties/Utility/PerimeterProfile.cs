@@ -18,7 +18,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                 return area;
             }
 
-            foreach (ILocalPolygon2d hole in perimeter.VoidEdges)
+            foreach (ILocalPolyline2d hole in perimeter.VoidEdges)
             {
                 area -= CalculatePartArea(hole.Points);
             }
@@ -37,7 +37,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             ILocalPoint2d edgeCentroid = CalculatePartCentroid(perimeter.OuterEdge.Points);
             Volume qz = edgeArea * edgeCentroid.Y;
             Volume qy = edgeArea * edgeCentroid.Z;
-            foreach (ILocalPolygon2d hole in perimeter.VoidEdges)
+            foreach (ILocalPolyline2d hole in perimeter.VoidEdges)
             {
                 OasysUnits.Area holeArea = CalculatePartArea(hole.Points);
                 ILocalPoint2d holeCentroid = CalculatePartCentroid(hole.Points);
@@ -76,7 +76,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                 return inertia;
             }
 
-            foreach (ILocalPolygon2d hole in centredOnElasticCentroid.VoidEdges)
+            foreach (ILocalPolyline2d hole in centredOnElasticCentroid.VoidEdges)
             {
                 inertia -= CalculatePartInertiaYy(hole.Points);
             }
@@ -93,7 +93,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                 return inertia;
             }
 
-            foreach (ILocalPolygon2d hole in centredOnElasticCentroid.VoidEdges)
+            foreach (ILocalPolyline2d hole in centredOnElasticCentroid.VoidEdges)
             {
                 inertia -= CalculatePartInertiaZz(hole.Points);
             }
@@ -163,22 +163,22 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             {
                 outerPoints.Add(Move(pt, translation));
             }
-            ILocalPolygon2d outerEdge = new LocalPolygon2d(outerPoints);
+            ILocalPolyline2d outerEdge = new LocalPolyline2d(outerPoints);
 
             if (perimeter.VoidEdges == null || perimeter.VoidEdges.Count == 0)
             {
                 return new Perimeter(outerEdge);
             }
 
-            IList<ILocalPolygon2d> voidEdges = new List<ILocalPolygon2d>();
-            foreach (ILocalPolygon2d voidEdge in perimeter.VoidEdges)
+            IList<ILocalPolyline2d> voidEdges = new List<ILocalPolyline2d>();
+            foreach (ILocalPolyline2d voidEdge in perimeter.VoidEdges)
             {
                 IList<ILocalPoint2d> voidPoints = new List<ILocalPoint2d>();
                 foreach (ILocalPoint2d pt in voidEdge.Points)
                 {
                     voidPoints.Add(Move(pt, translation));
                 }
-                ILocalPolygon2d translatedVoidEdge = new LocalPolygon2d(voidPoints);
+                ILocalPolyline2d translatedVoidEdge = new LocalPolyline2d(voidPoints);
                 voidEdges.Add(translatedVoidEdge);
             }
 

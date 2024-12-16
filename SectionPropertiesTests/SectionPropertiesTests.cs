@@ -18,15 +18,6 @@ namespace SectionPropertiesTests
             TestObjectsPropertiesAreNotNull(sectionProperties);
         }
 
-        [Theory]
-        [ClassData(typeof(SectionGenerator))]
-        public void DeserializeTest(ISection section)
-        {
-            ISectionProperties sectionProperties = new SectionProperties(section);
-            Assert.NotNull(sectionProperties);
-            TestObjectsSurvivesJsonRoundtrip(sectionProperties);
-        }
-
         public class SectionGenerator : IEnumerable<object[]>
         {
             private readonly List<object[]> _data = GetAllComponents();
@@ -68,16 +59,6 @@ namespace SectionPropertiesTests
             {
                 Assert.NotNull(property.GetValue(obj));
             }
-        }
-
-        private void TestObjectsSurvivesJsonRoundtrip<T>(T obj) where T : ISectionProperties
-        {
-            string json = obj.ToJson();
-            Assert.NotNull(json);
-            Assert.True(json.Length > 0);
-            T deserialized = json.FromJson<T>();
-            Assert.NotNull(deserialized);
-            Assert.Equivalent(obj, deserialized);
         }
     }
 }

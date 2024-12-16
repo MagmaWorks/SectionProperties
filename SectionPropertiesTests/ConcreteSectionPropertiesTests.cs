@@ -148,8 +148,8 @@ namespace SectionPropertiesTests
         [Theory]
         [InlineData(750 / 2 + 330, SectionFace.Bottom)]
         [InlineData(750 / 2 + 334, SectionFace.Top)]
-        [InlineData(311.824858898, SectionFace.RightSide)]
-        [InlineData(311.824858898, SectionFace.LeftSide)]
+        [InlineData(311.824858898, SectionFace.Right)]
+        [InlineData(311.824858898, SectionFace.Left)]
         public void EffectiveDepthTest(double expected, SectionFace face)
         {
             // Assemble
@@ -166,8 +166,8 @@ namespace SectionPropertiesTests
         [Theory]
         [InlineData(new double[] { 20, 20, 20, 20 }, SectionFace.Bottom)]
         [InlineData(new double[] { 12, 12 }, SectionFace.Top)]
-        [InlineData(new double[] { 12, 20, 20 }, SectionFace.RightSide)]
-        [InlineData(new double[] { 12, 20, 20 }, SectionFace.LeftSide)]
+        [InlineData(new double[] { 12, 20, 20 }, SectionFace.Right)]
+        [InlineData(new double[] { 12, 20, 20 }, SectionFace.Left)]
         public void ReinforcementAreaTest(double[] expectedDiameters, SectionFace face)
         {
             // Assemble

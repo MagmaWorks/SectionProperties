@@ -8,7 +8,7 @@ using OasysUnits.Units;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
-    public static class Reinforcement
+    public static class Rebar
     {
         private const double PiFactor = Math.PI / 4;
 
@@ -45,10 +45,10 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                 case SectionFace.Bottom:
                     return CalculateArea(section.Rebars.Where(r => r.Position.Z < concreteCentroid.Z));
 
-                case SectionFace.LeftSide:
+                case SectionFace.Left:
                     return CalculateArea(section.Rebars.Where(r => r.Position.Y > concreteCentroid.Y));
 
-                case SectionFace.RightSide:
+                case SectionFace.Right:
                     return CalculateArea(section.Rebars.Where(r => r.Position.Y > concreteCentroid.Y));
 
                 default:
@@ -76,14 +76,14 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                         return extends.Max.Z - rebarsCentroid.Z;
                     }
 
-                case SectionFace.LeftSide:
+                case SectionFace.Left:
                     {
                         List<IPart> rebars = GetParts(section.Rebars.Where(r => r.Position.Y > concreteCentroid.Y));
                         ILocalPoint2d rebarsCentroid = Centroid.CalculateCentroid(rebars);
                         return rebarsCentroid.Y - extends.Min.Y;
                     }
 
-                case SectionFace.RightSide:
+                case SectionFace.Right:
                     {
                         List<IPart> rebars = GetParts(section.Rebars.Where(r => r.Position.Y < concreteCentroid.Y));
                         ILocalPoint2d rebarsCentroid = Centroid.CalculateCentroid(rebars);

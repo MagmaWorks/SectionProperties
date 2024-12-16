@@ -12,7 +12,7 @@ namespace SectionPropertiesTests.TestUtility
         internal static ConcreteSection Perimeter()
         {
             LengthUnit unit = LengthUnit.Millimeter;
-            IMaterial material = new MockMaterial();
+            IMaterial material = new MockMaterial(MaterialType.Concrete);
             IProfile profile = PerimeterRectangle400x750();
             double link = 10;
             double cover = 25;
@@ -26,13 +26,13 @@ namespace SectionPropertiesTests.TestUtility
                 Rebar(20, 200, -375, link, cover),
             };
 
-            return new ConcreteSection(material, profile, rebars, Bar(link), new Length(cover, unit));
+            return new ConcreteSection(profile, material, Bar(link), new Length(cover, unit), rebars);
         }
 
         internal static ConcreteSection Rectangle()
         {
             LengthUnit unit = LengthUnit.Millimeter;
-            IMaterial material = new MockMaterial();
+            IMaterial material = new MockMaterial(MaterialType.Concrete);
             IProfile profile = Rectangle400x750();
             double link = 10;
             double cover = 25;
@@ -46,7 +46,7 @@ namespace SectionPropertiesTests.TestUtility
                 Rebar(20, 200, -375, link, cover),
             };
 
-            return new ConcreteSection(material, profile, rebars, Bar(link), new Length(cover, unit));
+            return new ConcreteSection(profile, material, Bar(link), new Length(cover, unit), rebars);
         }
 
         private static LongitudinalReinforcement Rebar(double dia, double edgeY, double edgeZ, double link, double cover)
@@ -80,13 +80,13 @@ namespace SectionPropertiesTests.TestUtility
         private static Rebar Bar(double dia)
         {
             Length diameter = new Length(dia, LengthUnit.Millimeter);
-            return new Rebar(new MockMaterial(), diameter);
+            return new Rebar(new MockMaterial(MaterialType.Reinforcement), diameter);
         }
 
         private static Perimeter PerimeterRectangle400x750()
         {
             LengthUnit unit = LengthUnit.Millimeter;
-            var solidEdge = new LocalPolygon2d(new List<ILocalPoint2d>()
+            var solidEdge = new LocalPolyline2d(new List<ILocalPoint2d>()
             {
                 new LocalPoint2d() { Y = new Length(-200, unit), Z = new Length(-375, unit)},
                 new LocalPoint2d() { Y = new Length(200, unit), Z = new Length(-375, unit)},

@@ -8,12 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MagmaWorks.Taxonomy.Sections" Version="0.0.26" />
-    <PackageReference Include="MagmaWorks.Taxonomy.Serialization" Version="0.0.26" />
+    <PackageReference Include="MagmaWorks.Taxonomy.Sections" Version="0.0.27" />
+    <PackageReference Include="MagmaWorks.Taxonomy.Serialization" Version="0.0.27" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-    <PackageReference Include="OasysUnits.Serialization.JsonNet" Version="1.1.1" />
+    <PackageReference Include="OasysUnits.Serialization.JsonNet" Version="1.2.1" />
     <PackageReference Include="xunit" Version="2.9.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0-pre.42">
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

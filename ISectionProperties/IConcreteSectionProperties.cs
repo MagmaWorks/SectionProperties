@@ -1,6 +1,4 @@
-﻿using OasysUnits;
-
-namespace MagmaWorks.Taxonomy.Sections.SectionProperties
+﻿namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
     public interface IConcreteSectionProperties : ISectionProperties
     {

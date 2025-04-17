@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MagmaWorks.Geometry;
-using OasysUnits;
-using OasysUnits.Units;
-
-namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
+﻿namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
 {
     internal readonly struct EllipseQuarterPart : IPart
     {
@@ -62,12 +56,12 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
             return CreateFullEllipse(diameter, diameter, position);
         }
 
-        public OasysUnits.Area GetArea()
+        public Area GetArea()
         {
             LengthUnit unit = a.Unit;
-            OasysUnits.Area res = OasysUnits.Area.Zero;
-            OasysUnits.Area.TryParse($"0 {Length.GetAbbreviation(unit)}²", out res);
-            return new OasysUnits.Area(0.25 * Math.PI * a.As(unit) * b.As(unit), res.Unit);
+            Area res = Area.Zero;
+            Area.TryParse($"0 {Length.GetAbbreviation(unit)}²", out res);
+            return new Area(0.25 * Math.PI * a.As(unit) * b.As(unit), res.Unit);
         }
 
         public AreaMomentOfInertia GetMomentOfInertiaYy()

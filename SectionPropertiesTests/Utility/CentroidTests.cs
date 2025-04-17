@@ -1,6 +1,5 @@
 ﻿using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 
 namespace SectionPropertiesTests
@@ -11,10 +10,10 @@ namespace SectionPropertiesTests
         public void Angle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateAngle().Profile;
+            IProfile section = Sections.CreateAngle().Profile;
 
             // Act
-            ILocalPoint2d pt = Centroid.CalculateCentroid(section);
+            ILocalPoint2d pt = Centroids.CalculateCentroid(section);
 
             // Assert
             Assert.Equal(24.9055, pt.Y.Millimeters, 4);
@@ -25,10 +24,10 @@ namespace SectionPropertiesTests
         public void DoubleAngle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateDoubleAngle().Profile;
+            IProfile section = Sections.CreateDoubleAngle().Profile;
 
             // Act
-            ILocalPoint2d pt = Centroid.CalculateCentroid(section);
+            ILocalPoint2d pt = Centroids.CalculateCentroid(section);
 
             // Assert
             Assert.Equal(0, pt.Y.Millimeters, 4);
@@ -39,10 +38,10 @@ namespace SectionPropertiesTests
         public void C()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateC().Profile;
+            IProfile section = Sections.CreateC().Profile;
 
             // Act
-            ILocalPoint2d pt = Centroid.CalculateCentroid(section);
+            ILocalPoint2d pt = Centroids.CalculateCentroid(section);
 
             // Assert
             Assert.Equal(33.6747, pt.Y.Millimeters, 4);
@@ -53,10 +52,10 @@ namespace SectionPropertiesTests
         public void Channel()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateChannel().Profile;
+            IProfile section = Sections.CreateChannel().Profile;
 
             // Act
-            ILocalPoint2d pt = Centroid.CalculateCentroid(section);
+            ILocalPoint2d pt = Centroids.CalculateCentroid(section);
 
             // Assert
             Assert.Equal(33.8743, pt.Y.Millimeters, 4);
@@ -67,10 +66,10 @@ namespace SectionPropertiesTests
         public void CustomI()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCustomI().Profile;
+            IProfile section = Sections.CreateCustomI().Profile;
 
             // Act
-            ILocalPoint2d pt = Centroid.CalculateCentroid(section);
+            ILocalPoint2d pt = Centroids.CalculateCentroid(section);
 
             // Assert
             Assert.Equal(0, pt.Y.Millimeters);
@@ -81,10 +80,10 @@ namespace SectionPropertiesTests
         public void Tee()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTee().Profile;
+            IProfile section = Sections.CreateTee().Profile;
 
             // Act
-            ILocalPoint2d pt = Centroid.CalculateCentroid(section);
+            ILocalPoint2d pt = Centroids.CalculateCentroid(section);
 
             // Assert
             Assert.Equal(0, pt.Y.Millimeters);
@@ -95,10 +94,10 @@ namespace SectionPropertiesTests
         public void Trapezoid()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTrapezoid().Profile;
+            IProfile section = Sections.CreateTrapezoid().Profile;
 
             // Act
-            ILocalPoint2d pt = Centroid.CalculateCentroid(section);
+            ILocalPoint2d pt = Centroids.CalculateCentroid(section);
 
             // Assert
             Assert.Equal(0, pt.Y.Millimeters);
@@ -109,10 +108,10 @@ namespace SectionPropertiesTests
         public void Z()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateZ().Profile;
+            IProfile section = Sections.CreateZ().Profile;
 
             // Act
-            ILocalPoint2d pt = Centroid.CalculateCentroid(section);
+            ILocalPoint2d pt = Centroids.CalculateCentroid(section);
 
             // Assert
             Assert.Equal(-29.7872, pt.Y.Millimeters, 4);
@@ -123,10 +122,10 @@ namespace SectionPropertiesTests
         public void PerimeterWithVoid()
         {
             // Assemble
-            IPerimeter section = (IPerimeter)TestUtility.Sections.PerimeterVoided().Profile;
+            IPerimeter section = (IPerimeter)Sections.PerimeterVoided().Profile;
 
             // Act
-            ILocalPoint2d pt = Centroid.CalculateCentroid(section);
+            ILocalPoint2d pt = Centroids.CalculateCentroid(section);
 
             // Assert
             Assert.Equal(0, pt.Y.Value);
@@ -137,10 +136,10 @@ namespace SectionPropertiesTests
         public void Perimeter()
         {
             // Assemble
-            IPerimeter section = (IPerimeter)TestUtility.Sections.Perimeter().Profile;
+            IPerimeter section = (IPerimeter)Sections.Perimeter().Profile;
 
             // Act
-            ILocalPoint2d pt = Centroid.CalculateCentroid(section);
+            ILocalPoint2d pt = Centroids.CalculateCentroid(section);
 
             // Assert
             Assert.Equal(0, pt.Y.Value, 12);
@@ -152,7 +151,7 @@ namespace SectionPropertiesTests
         public void DoubleSymmetricProfile(ISection section)
         {
             // Act
-            ILocalPoint2d pt = Centroid.CalculateCentroid(section.Profile);
+            ILocalPoint2d pt = Centroids.CalculateCentroid(section.Profile);
 
             // Assert
             Assert.Equal(0, pt.Y.Value, 12);
@@ -162,18 +161,18 @@ namespace SectionPropertiesTests
         public static IEnumerable<object[]> DoubleSymmetricProfiles =>
             new List<object[]>
             {
-            new object[] { TestUtility.Sections.CreateCircularHollow() },
-            new object[] { TestUtility.Sections.CreateCircle() },
-            new object[] { TestUtility.Sections.CreateCruciform() },
-            new object[] { TestUtility.Sections.CreateEllipse() },
-            new object[] { TestUtility.Sections.CreateEllipseHollow() },
-            new object[] { TestUtility.Sections.CreateIParallelFlange() },
-            new object[] { TestUtility.Sections.CreateI() },
-            new object[] { TestUtility.Sections.CreateRectangularHollow() },
-            new object[] { TestUtility.Sections.CreateRoundedRectangularHollow() },
-            new object[] { TestUtility.Sections.CreateRoundedRectangle() },
-            new object[] { TestUtility.Sections.CreateRectangle() },
-            new object[] { TestUtility.Sections.CreateDoubleChannel() },
+            new object[] { Sections.CreateCircularHollow() },
+            new object[] { Sections.CreateCircle() },
+            new object[] { Sections.CreateCruciform() },
+            new object[] { Sections.CreateEllipse() },
+            new object[] { Sections.CreateEllipseHollow() },
+            new object[] { Sections.CreateIParallelFlange() },
+            new object[] { Sections.CreateI() },
+            new object[] { Sections.CreateRectangularHollow() },
+            new object[] { Sections.CreateRoundedRectangularHollow() },
+            new object[] { Sections.CreateRoundedRectangle() },
+            new object[] { Sections.CreateRectangle() },
+            new object[] { Sections.CreateDoubleChannel() },
             };
     }
 }

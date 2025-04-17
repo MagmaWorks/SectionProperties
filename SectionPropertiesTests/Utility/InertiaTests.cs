@@ -1,5 +1,4 @@
 ﻿using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits;
 using Utility = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 
 namespace SectionPropertiesTests
@@ -10,11 +9,11 @@ namespace SectionPropertiesTests
         public void Angle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateAngle().Profile;
+            IProfile section = Sections.CreateAngle().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(26063.9, Iyy.MillimetersToTheFourth, 1);
@@ -25,11 +24,11 @@ namespace SectionPropertiesTests
         public void C()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateC().Profile;
+            IProfile section = Sections.CreateC().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(25.135479E+6, Iyy.MillimetersToTheFourth, 0);
@@ -40,11 +39,11 @@ namespace SectionPropertiesTests
         public void Channel()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateChannel().Profile;
+            IProfile section = Sections.CreateChannel().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(30.027431E+6, Iyy.MillimetersToTheFourth, 0);
@@ -55,11 +54,11 @@ namespace SectionPropertiesTests
         public void Circle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCircle().Profile;
+            IProfile section = Sections.CreateCircle().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             double expected = Math.PI / 64 * Math.Pow(300, 4);
@@ -71,11 +70,11 @@ namespace SectionPropertiesTests
         public void CircularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCircularHollow().Profile;
+            IProfile section = Sections.CreateCircularHollow().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             double expected = Math.PI / 64 * (Math.Pow(200, 4) - Math.Pow(180, 4));
@@ -87,11 +86,11 @@ namespace SectionPropertiesTests
         public void Cruciform()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCruciform().Profile;
+            IProfile section = Sections.CreateCruciform().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(23173.6, Iyy.MillimetersToTheFourth, 1);
@@ -102,11 +101,11 @@ namespace SectionPropertiesTests
         public void CustomI()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCustomI().Profile;
+            IProfile section = Sections.CreateCustomI().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(12466, Iyy.CentimetersToTheFourth, 0);
@@ -117,11 +116,11 @@ namespace SectionPropertiesTests
         public void DoubleAngle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateDoubleAngle().Profile;
+            IProfile section = Sections.CreateDoubleAngle().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(52127.9, Iyy.MillimetersToTheFourth, 1);
@@ -132,11 +131,11 @@ namespace SectionPropertiesTests
         public void DoubleChannel()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateDoubleChannel().Profile;
+            IProfile section = Sections.CreateDoubleChannel().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(60.054861E+6, Iyy.MillimetersToTheFourth, 0);
@@ -147,11 +146,11 @@ namespace SectionPropertiesTests
         public void Ellipse()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateEllipse().Profile;
+            IProfile section = Sections.CreateEllipse().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(15.26814E+6, Iyy.MillimetersToTheFourth, 0);
@@ -162,11 +161,11 @@ namespace SectionPropertiesTests
         public void EllipseHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateEllipseHollow().Profile;
+            IProfile section = Sections.CreateEllipseHollow().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(9.593552E+6, Iyy.MillimetersToTheFourth, 0);
@@ -177,11 +176,11 @@ namespace SectionPropertiesTests
         public void ParallelFlange()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateIParallelFlange().Profile;
+            IProfile section = Sections.CreateIParallelFlange().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(1072, Iyy.MillimetersToTheFourth / Math.Pow(10, 6), 0);
@@ -192,11 +191,11 @@ namespace SectionPropertiesTests
         public void I()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateI().Profile;
+            IProfile section = Sections.CreateI().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(138.586913E+6, Iyy.MillimetersToTheFourth, 0);
@@ -207,11 +206,11 @@ namespace SectionPropertiesTests
         public void Rectangle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRectangle().Profile;
+            IProfile section = Sections.CreateRectangle().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(1.0 / 12 * 54 * 23 * 23 * 23, Iyy.MillimetersToTheFourth, 10);
@@ -222,11 +221,11 @@ namespace SectionPropertiesTests
         public void RectangularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRectangularHollow().Profile;
+            IProfile section = Sections.CreateRectangularHollow().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(112.280434E+6, Iyy.MillimetersToTheFourth, 0);
@@ -237,11 +236,11 @@ namespace SectionPropertiesTests
         public void RoundedRectangle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRoundedRectangle().Profile;
+            IProfile section = Sections.CreateRoundedRectangle().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(245091834, Iyy.MillimetersToTheFourth, 0);
@@ -252,11 +251,11 @@ namespace SectionPropertiesTests
         public void RoundedRectangularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRoundedRectangularHollow().Profile;
+            IProfile section = Sections.CreateRoundedRectangularHollow().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(344780828, Iyy.MillimetersToTheFourth, 0);
@@ -267,11 +266,11 @@ namespace SectionPropertiesTests
         public void Tee()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTee().Profile;
+            IProfile section = Sections.CreateTee().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(13.663128E+6, Iyy.MillimetersToTheFourth, 0);
@@ -282,11 +281,11 @@ namespace SectionPropertiesTests
         public void Trapezoid()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTrapezoid().Profile;
+            IProfile section = Sections.CreateTrapezoid().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(82864206, Iyy.MillimetersToTheFourth, 0);
@@ -297,11 +296,11 @@ namespace SectionPropertiesTests
         public void Z()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateZ().Profile;
+            IProfile section = Sections.CreateZ().Profile;
 
             // Act
-            AreaMomentOfInertia Iyy = Utility.Inertia.CalculateInertiaYy(section);
-            AreaMomentOfInertia Izz = Utility.Inertia.CalculateInertiaZz(section);
+            AreaMomentOfInertia Iyy = Utility.Inertiae.CalculateInertiaYy(section);
+            AreaMomentOfInertia Izz = Utility.Inertiae.CalculateInertiaZz(section);
 
             // Assert
             Assert.Equal(472.585816E+6, Iyy.MillimetersToTheFourth, 0);

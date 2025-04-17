@@ -1,29 +1,28 @@
 ﻿using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
     public class SectionProperties : ISectionProperties
     {
         public ILocalPoint2d Centroid
-            => _centroid ??= Utility.Centroid.CalculateCentroid(_profile);
+            => _centroid ??= Utility.Centroids.CalculateCentroid(_profile);
         public Length Perimeter
-            => _perimeter ??= Utility.PerimeterLength.CalculatePerimeter(_profile);
+            => _perimeter ??= Utility.PerimeterLengths.CalculatePerimeter(_profile);
         public ILocalDomain2d Extends => _domain ??= Utility.Extends.GetDomain(_profile);
-        public Area Area => _area ??= Utility.Area.CalculateArea(_profile);
+        public Area Area => _area ??= Utility.Areas.CalculateArea(_profile);
         public SectionModulus ElasticSectionModulusYy
-            => _elasticSectionModulusYy ??= Utility.SectionModulus.CalculateSectionModulusYy(_profile);
+            => _elasticSectionModulusYy ??= Utility.SectionModuli.CalculateSectionModulusYy(_profile);
         public SectionModulus ElasticSectionModulusZz
-            => _elasticSectionModulusZz ??= Utility.SectionModulus.CalculateSectionModulusZz(_profile);
+            => _elasticSectionModulusZz ??= Utility.SectionModuli.CalculateSectionModulusZz(_profile);
         public AreaMomentOfInertia MomentOfInertiaYy
-            => _momentOfInertiaYy ??= Utility.Inertia.CalculateInertiaYy(_profile);
+            => _momentOfInertiaYy ??= Utility.Inertiae.CalculateInertiaYy(_profile);
         public AreaMomentOfInertia MomentOfInertiaZz
-            => _momentOfInertiaZz ??= Utility.Inertia.CalculateInertiaZz(_profile);
+            => _momentOfInertiaZz ??= Utility.Inertiae.CalculateInertiaZz(_profile);
         public Length RadiusOfGyrationYy
-            => _radiusOfGyrationYy ??= Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(_profile);
+            => _radiusOfGyrationYy ??= Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(_profile);
         public Length RadiusOfGyrationZz
-            => _radiusOfGyrationZz ??= Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(_profile);
+            => _radiusOfGyrationZz ??= Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(_profile);
 
         private ILocalPoint2d _centroid;
         private Length? _perimeter;

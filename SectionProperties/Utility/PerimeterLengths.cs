@@ -1,12 +1,6 @@
-﻿using System;
-using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits;
-using OasysUnits.Units;
-
-namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
+﻿namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
-    public static class PerimeterLength
+    public static class PerimeterLengths
     {
         public static Length CalculatePerimeter(IProfile profile)
         {

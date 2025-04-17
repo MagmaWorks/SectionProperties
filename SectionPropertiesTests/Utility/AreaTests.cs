@@ -9,10 +9,10 @@ namespace SectionPropertiesTests
         public void Angle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateAngle().Profile;
+            IProfile section = Sections.CreateAngle().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal((23 - 15) * 10.9 + 54 * 15, area.SquareMillimeters, 12);
@@ -22,10 +22,10 @@ namespace SectionPropertiesTests
         public void C()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateC().Profile;
+            IProfile section = Sections.CreateC().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(4111, area.SquareMillimeters, 12);
@@ -35,10 +35,10 @@ namespace SectionPropertiesTests
         public void Channel()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateChannel().Profile;
+            IProfile section = Sections.CreateChannel().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(2 * 100.4 * 15 + (200.3 - 2 * 15) * 10, area.SquareMillimeters, 10);
@@ -48,10 +48,10 @@ namespace SectionPropertiesTests
         public void Circle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCircle().Profile;
+            IProfile section = Sections.CreateCircle().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(0.25 * Math.PI * 300 * 300, area.SquareMillimeters, 12);
@@ -61,10 +61,10 @@ namespace SectionPropertiesTests
         public void CircularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCircularHollow().Profile;
+            IProfile section = Sections.CreateCircularHollow().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(0.25 * Math.PI * 200 * 200 - 0.25 * Math.PI * 180 * 180, area.SquareMillimeters, 10);
@@ -74,10 +74,10 @@ namespace SectionPropertiesTests
         public void Cruciform()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCruciform().Profile;
+            IProfile section = Sections.CreateCruciform().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(23 * 10.9 + 54 * 15 - 10.9 * 15, area.SquareMillimeters, 12);
@@ -87,10 +87,10 @@ namespace SectionPropertiesTests
         public void CustomI()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCustomI().Profile;
+            IProfile section = Sections.CreateCustomI().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(20 * 7 + 25 * 3 + (20 - 7 - 3) * 5, area.SquareCentimeters, 12);
@@ -100,10 +100,10 @@ namespace SectionPropertiesTests
         public void DoubleAngle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateDoubleAngle().Profile;
+            IProfile section = Sections.CreateDoubleAngle().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(2 * ((23 - 15) * 10.9 + 54 * 15), area.SquareMillimeters, 12);
@@ -113,10 +113,10 @@ namespace SectionPropertiesTests
         public void DoubleChannel()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateDoubleChannel().Profile;
+            IProfile section = Sections.CreateDoubleChannel().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(2 * (2 * 100.4 * 15 + (200.3 - 2 * 15) * 10), area.SquareMillimeters, 10);
@@ -126,10 +126,10 @@ namespace SectionPropertiesTests
         public void Ellipse()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateEllipse().Profile;
+            IProfile section = Sections.CreateEllipse().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(16964.6, area.SquareMillimeters, 3);
@@ -139,10 +139,10 @@ namespace SectionPropertiesTests
         public void EllipseHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateEllipseHollow().Profile;
+            IProfile section = Sections.CreateEllipseHollow().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(16964.6 - 10868.3, area.SquareMillimeters, 1);
@@ -152,10 +152,10 @@ namespace SectionPropertiesTests
         public void ParallelFlange()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateIParallelFlange().Profile;
+            IProfile section = Sections.CreateIParallelFlange().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(23863.77896, area.SquareMillimeters, 5);
@@ -165,10 +165,10 @@ namespace SectionPropertiesTests
         public void I()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateI().Profile;
+            IProfile section = Sections.CreateI().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(2 * 504 * 15 + (203 - 2 * 15) * 10.9, area.SquareMillimeters, 12);
@@ -178,10 +178,10 @@ namespace SectionPropertiesTests
         public void Rectangle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRectangle().Profile;
+            IProfile section = Sections.CreateRectangle().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(23 * 54, area.SquareMillimeters, 12);
@@ -191,10 +191,10 @@ namespace SectionPropertiesTests
         public void RectangularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRectangularHollow().Profile;
+            IProfile section = Sections.CreateRectangularHollow().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(20.3 * 50.4 - (20.3 - 2 * 1.09) * (50.4 - 2 * 1.09), area.SquareCentimeters, 12);
@@ -204,10 +204,10 @@ namespace SectionPropertiesTests
         public void RoundedRectangle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRoundedRectangle().Profile;
+            IProfile section = Sections.CreateRoundedRectangle().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(489, area.SquareCentimeters, 0);
@@ -217,10 +217,10 @@ namespace SectionPropertiesTests
         public void RoundedRectangularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRoundedRectangularHollow().Profile;
+            IProfile section = Sections.CreateRoundedRectangularHollow().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(11979, area.SquareMillimeters, 9);
@@ -230,10 +230,10 @@ namespace SectionPropertiesTests
         public void Tee()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTee().Profile;
+            IProfile section = Sections.CreateTee().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(100.4 * 15 + (200.3 - 15) * 10, area.SquareMillimeters, 12);
@@ -243,10 +243,10 @@ namespace SectionPropertiesTests
         public void Trapezoid()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTrapezoid().Profile;
+            IProfile section = Sections.CreateTrapezoid().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(0.5 * (100.4 + 150.4) * 200.3, area.SquareMillimeters, 10);
@@ -256,10 +256,10 @@ namespace SectionPropertiesTests
         public void Z()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateZ().Profile;
+            IProfile section = Sections.CreateZ().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(18800, area.SquareMillimeters, 12);
@@ -270,10 +270,10 @@ namespace SectionPropertiesTests
         public void PerimeterWithVoid()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.PerimeterVoided().Profile;
+            IProfile section = Sections.PerimeterVoided().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(16 * 11 - 4 * 14, area.SquareCentimeters, 12);
@@ -283,10 +283,10 @@ namespace SectionPropertiesTests
         public void Perimeter()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.Perimeter().Profile;
+            IProfile section = Sections.Perimeter().Profile;
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(section);
+            Area area = Utility.Areas.CalculateArea(section);
 
             // Assert
             Assert.Equal(540000, area.SquareMillimeters);

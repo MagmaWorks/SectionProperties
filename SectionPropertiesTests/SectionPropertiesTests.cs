@@ -1,8 +1,5 @@
 using System.Collections;
 using System.Reflection;
-using MagmaWorks.Taxonomy.Sections;
-using MagmaWorks.Taxonomy.Sections.SectionProperties;
-using SectionPropertiesTests.TestUtility;
 
 namespace SectionPropertiesTests
 {

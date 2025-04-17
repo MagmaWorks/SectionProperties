@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
-using OasysUnits;
+﻿using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {

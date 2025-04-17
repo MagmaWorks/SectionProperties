@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
-using OasysUnits;
-using OasysUnits.Units;
+﻿using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
-    public static class Inertia
+    public static class Inertiae
     {
         public static AreaMomentOfInertia CalculateInertiaYy(IProfile profile)
         {
             if (profile is IPerimeter perim)
             {
-                return PerimeterProfile.CalculateInertiaYy(perim);
+                return PerimeterProfiles.CalculateInertiaYy(perim);
             }
 
             return CalculateInertiaYy(ProfileParts.GetParts(profile));
@@ -22,7 +16,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 
         internal static AreaMomentOfInertia CalculateInertiaYy(IList<IPart> parts, ILocalPoint2d elasticCentroid = null)
         {
-            elasticCentroid ??= Centroid.CalculateCentroid(parts);
+            elasticCentroid ??= Centroids.CalculateCentroid(parts);
             AreaMomentOfInertia inertia = AreaMomentOfInertia.Zero;
             foreach (IPart part in parts)
             {
@@ -37,7 +31,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
         {
             if (profile is IPerimeter perim)
             {
-                return PerimeterProfile.CalculateInertiaZz(perim);
+                return PerimeterProfiles.CalculateInertiaZz(perim);
             }
 
             return CalculateInertiaZz(ProfileParts.GetParts(profile));
@@ -45,7 +39,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 
         internal static AreaMomentOfInertia CalculateInertiaZz(IList<IPart> parts, ILocalPoint2d elasticCentroid = null)
         {
-            elasticCentroid ??= Centroid.CalculateCentroid(parts);
+            elasticCentroid ??= Centroids.CalculateCentroid(parts);
             AreaMomentOfInertia inertia = AreaMomentOfInertia.Zero;
             foreach (IPart part in parts)
             {
@@ -56,11 +50,11 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             return inertia;
         }
 
-        private static AreaMomentOfInertia PartAreaContribution(OasysUnits.Area area, Length d)
+        private static AreaMomentOfInertia PartAreaContribution(Area area, Length d)
         {
             LengthUnit unit = d.Unit;
-            OasysUnits.Area m2 = OasysUnits.Area.Zero;
-            OasysUnits.Area.TryParse($"0 {Length.GetAbbreviation(unit)}²", out m2);
+            Area m2 = Area.Zero;
+            Area.TryParse($"0 {Length.GetAbbreviation(unit)}²", out m2);
             AreaMomentOfInertia m4 = AreaMomentOfInertia.Zero;
             AreaMomentOfInertia.TryParse($"0 {Length.GetAbbreviation(unit)}⁴", out m4);
             return new AreaMomentOfInertia(area.As(m2.Unit) * Math.Pow(d.As(unit), 2), m4.Unit);

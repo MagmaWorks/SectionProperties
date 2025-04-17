@@ -1,25 +1,22 @@
 ﻿using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
-using OasysUnits;
-using OasysUnits.Units;
-using Area = OasysUnits.Area;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
     public class ConcreteSectionProperties : SectionProperties, IConcreteSectionProperties
     {
-        public Area TotalReinforcementArea => _reinforcementArea ??= Rebar.CalculateArea(_section.Rebars);
-        public Area ConcreteArea => base.Area - TotalReinforcementArea;
+        public Area TotalReinforcementArea => _reinforcementArea ??= Rebars.CalculateArea(_section.Rebars);
+        public Area ConcreteArea => Area - TotalReinforcementArea;
         public Ratio GeometricReinforcementRatio =>
             new Ratio(TotalReinforcementArea.SquareMeters / ConcreteArea.SquareMeters, RatioUnit.DecimalFraction);
-        public Area CrossSectionalShearReinforcementArea => Rebar.CalculateArea(_section.Link) * 2;
+        public Area CrossSectionalShearReinforcementArea => Rebars.CalculateArea(_section.Link) * 2;
         public AreaMomentOfInertia ReinforcementSecondMomentOfAreaYy =>
-            _reinforcementSecondMomentOfAreaYy ??= Rebar.CalculateInertiaYy(_section);
+            _reinforcementSecondMomentOfAreaYy ??= Rebars.CalculateInertiaYy(_section);
         public AreaMomentOfInertia ReinforcementSecondMomentOfAreaZz =>
-            _reinforcementSecondMomentOfAreaZz ??= Rebar.CalculateInertiaZz(_section);
+            _reinforcementSecondMomentOfAreaZz ??= Rebars.CalculateInertiaZz(_section);
         public Length ReinforcementRadiusOfGyrationYy =>
-            _reinforcementRadiusOfGyrationYy ??= Rebar.CalculateRadiusOfGyrationYy(_section);
+            _reinforcementRadiusOfGyrationYy ??= Rebars.CalculateRadiusOfGyrationYy(_section);
         public Length ReinforcementRadiusOfGyrationZz =>
-            _reinforcementRadiusOfGyrationZz ??= Rebar.CalculateRadiusOfGyrationZz(_section);
+            _reinforcementRadiusOfGyrationZz ??= Rebars.CalculateRadiusOfGyrationZz(_section);
 
         private Area? _reinforcementArea;
         private AreaMomentOfInertia? _reinforcementSecondMomentOfAreaYy;
@@ -34,8 +31,8 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties
         }
 
         public Length EffectiveDepth(SectionFace face)
-            => Rebar.CalculateEffectiveDepth(_section, face);
+            => Rebars.CalculateEffectiveDepth(_section, face);
         public Area ReinforcementArea(SectionFace face)
-            => Rebar.CalculateArea(_section, face);
+            => Rebars.CalculateArea(_section, face);
     }
 }

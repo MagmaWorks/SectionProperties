@@ -1,5 +1,4 @@
 ﻿using MagmaWorks.Geometry;
-using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
 {
@@ -7,7 +6,7 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
     {
         public ILocalPoint2d ElasticCentroid { get; }
         public ILocalDomain2d Extends { get; }
-        public OasysUnits.Area GetArea();
+        public Area GetArea();
         public AreaMomentOfInertia GetMomentOfInertiaYy();
         public AreaMomentOfInertia GetMomentOfInertiaZz();
     }

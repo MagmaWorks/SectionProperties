@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits;
-using OasysUnits.Units;
-
-namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
+﻿namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
-    internal static class PerimeterProfile
+    internal static class PerimeterProfiles
     {
-        internal static OasysUnits.Area CalculateArea(IPerimeter perimeter)
+        internal static Area CalculateArea(IPerimeter perimeter)
         {
-            OasysUnits.Area area = CalculatePartArea(perimeter.OuterEdge.Points);
+            Area area = CalculatePartArea(perimeter.OuterEdge.Points);
             if (perimeter.VoidEdges == null || perimeter.VoidEdges.Count == 0)
             {
                 return area;
@@ -33,13 +25,13 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
                 return CalculatePartCentroid(perimeter.OuterEdge.Points);
             }
 
-            OasysUnits.Area edgeArea = CalculatePartArea(perimeter.OuterEdge.Points);
+            Area edgeArea = CalculatePartArea(perimeter.OuterEdge.Points);
             ILocalPoint2d edgeCentroid = CalculatePartCentroid(perimeter.OuterEdge.Points);
-            Volume qz = edgeArea * edgeCentroid.Y;
-            Volume qy = edgeArea * edgeCentroid.Z;
+            SectionModulus qz = edgeArea * edgeCentroid.Y;
+            SectionModulus qy = edgeArea * edgeCentroid.Z;
             foreach (ILocalPolyline2d hole in perimeter.VoidEdges)
             {
-                OasysUnits.Area holeArea = CalculatePartArea(hole.Points);
+                Area holeArea = CalculatePartArea(hole.Points);
                 ILocalPoint2d holeCentroid = CalculatePartCentroid(hole.Points);
                 qz -= holeArea * holeCentroid.Y;
                 qy -= holeArea * holeCentroid.Z;
@@ -55,16 +47,16 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 
         internal static Length CalculateRadiusOfGyrationYy(IPerimeter perimeter)
         {
-            OasysUnits.Area area = CalculateArea(perimeter);
+            Area area = CalculateArea(perimeter);
             AreaMomentOfInertia inertia = CalculateInertiaYy(perimeter);
-            return RadiusOfGyration.CalculateRadiusOfGyration(area, inertia);
+            return RadiusOfGyrations.CalculateRadiusOfGyration(area, inertia);
         }
 
         internal static Length CalculateRadiusOfGyrationZz(IPerimeter perimeter)
         {
-            OasysUnits.Area area = CalculateArea(perimeter);
+            Area area = CalculateArea(perimeter);
             AreaMomentOfInertia inertia = CalculateInertiaZz(perimeter);
-            return RadiusOfGyration.CalculateRadiusOfGyration(area, inertia);
+            return RadiusOfGyrations.CalculateRadiusOfGyration(area, inertia);
         }
 
         internal static AreaMomentOfInertia CalculateInertiaYy(IPerimeter perimeter)
@@ -101,20 +93,20 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             return inertia;
         }
 
-        internal static OasysUnits.SectionModulus CalculateSectionModulusYy(IPerimeter perimeter)
+        internal static SectionModulus CalculateSectionModulusYy(IPerimeter perimeter)
         {
-            ILocalPoint2d elasticCentroid = Centroid.CalculateCentroid(perimeter);
+            ILocalPoint2d elasticCentroid = Centroids.CalculateCentroid(perimeter);
             ILocalDomain2d domain = Extends.GetDomain(perimeter);
-            AreaMomentOfInertia inertia = Inertia.CalculateInertiaYy(perimeter);
-            return SectionModulus.CalculateSectionModulus(domain.Max.Z, domain.Min.Z, elasticCentroid.Z, inertia);
+            AreaMomentOfInertia inertia = Inertiae.CalculateInertiaYy(perimeter);
+            return SectionModuli.CalculateSectionModulus(domain.Max.Z, domain.Min.Z, elasticCentroid.Z, inertia);
         }
 
-        internal static OasysUnits.SectionModulus CalculateSectionModulusZz(IPerimeter perimeter)
+        internal static SectionModulus CalculateSectionModulusZz(IPerimeter perimeter)
         {
-            ILocalPoint2d elasticCentroid = Centroid.CalculateCentroid(perimeter);
+            ILocalPoint2d elasticCentroid = Centroids.CalculateCentroid(perimeter);
             ILocalDomain2d domain = Extends.GetDomain(perimeter);
-            AreaMomentOfInertia inertia = Inertia.CalculateInertiaZz(perimeter);
-            return SectionModulus.CalculateSectionModulus(domain.Max.Y, domain.Min.Y, elasticCentroid.Y, inertia);
+            AreaMomentOfInertia inertia = Inertiae.CalculateInertiaZz(perimeter);
+            return SectionModuli.CalculateSectionModulus(domain.Max.Y, domain.Min.Y, elasticCentroid.Y, inertia);
         }
 
         private static AreaMomentOfInertia CalculatePartInertiaYy(IList<ILocalPoint2d> p)
@@ -194,10 +186,10 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
             };
         }
 
-        private static OasysUnits.Area CalculatePartArea(IList<ILocalPoint2d> pts)
+        private static Area CalculatePartArea(IList<ILocalPoint2d> pts)
         {
-            OasysUnits.Area res = OasysUnits.Area.Zero;
-            OasysUnits.Area.TryParse($"0 {Length.GetAbbreviation(pts.FirstOrDefault().Y.Unit)}²", out res);
+            Area res = Area.Zero;
+            Area.TryParse($"0 {Length.GetAbbreviation(pts.FirstOrDefault().Y.Unit)}²", out res);
 
             for (int i = 0; i < pts.Count - 1; i++)
             {
@@ -247,8 +239,8 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 
         private static bool IsClockwise(IList<ILocalPoint2d> pts)
         {
-            OasysUnits.Area res = OasysUnits.Area.Zero;
-            OasysUnits.Area.TryParse($"0 {Length.GetAbbreviation(pts.FirstOrDefault().Y.Unit)}²", out res);
+            Area res = Area.Zero;
+            Area.TryParse($"0 {Length.GetAbbreviation(pts.FirstOrDefault().Y.Unit)}²", out res);
 
             for (int i = 0; i < pts.Count - 1; i++)
             {

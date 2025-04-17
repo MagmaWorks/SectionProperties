@@ -1,8 +1,3 @@
-using MagmaWorks.Taxonomy.Sections;
-using MagmaWorks.Taxonomy.Sections.SectionProperties;
-using OasysUnits;
-using SectionPropertiesTests.TestUtility;
-
 namespace SectionPropertiesTests
 {
     public class ConcreteSectionPropertiesTests

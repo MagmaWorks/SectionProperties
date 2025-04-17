@@ -1,6 +1,5 @@
 ﻿using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
-using OasysUnits;
 
 namespace SectionPropertiesTests
 {
@@ -10,10 +9,10 @@ namespace SectionPropertiesTests
         public void CalculatePerimeterTest()
         {
             // Assemble
-            IPerimeter section = (IPerimeter)TestUtility.Sections.PerimeterVoided().Profile;
+            IPerimeter section = (IPerimeter)Sections.PerimeterVoided().Profile;
 
             // Act
-            Length length = PerimeterLength.CalculatePerimeter(section);
+            Length length = PerimeterLengths.CalculatePerimeter(section);
 
             // Assert
             Assert.Equal((11 + 16) * 2, length.Centimeters);

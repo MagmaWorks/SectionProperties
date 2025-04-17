@@ -2,11 +2,8 @@
 using System.Reflection;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Sections;
 using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
-using OasysUnits;
-using SectionPropertiesTests.TestUtility;
-using SectionModulus = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.SectionModulus;
+using SectionModuli = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.SectionModuli;
 using Utility = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 
 namespace SectionPropertiesTests
@@ -19,11 +16,11 @@ namespace SectionPropertiesTests
         {
             // Assemble
             IPerimeter original = new Perimeter(section.Profile);
-            ILocalPoint2d originalCentroid = Centroid.CalculateCentroid(original);
+            ILocalPoint2d originalCentroid = Centroids.CalculateCentroid(original);
 
             // Act
-            IPerimeter translatedPerimeter = PerimeterProfile.MoveToElasticCentroid(original);
-            ILocalPoint2d newCentroid = Centroid.CalculateCentroid(translatedPerimeter);
+            IPerimeter translatedPerimeter = PerimeterProfiles.MoveToElasticCentroid(original);
+            ILocalPoint2d newCentroid = Centroids.CalculateCentroid(translatedPerimeter);
 
             // Assert
             Assert.Equal(0, newCentroid.Y.Value, 12);
@@ -41,11 +38,11 @@ namespace SectionPropertiesTests
             }
 
             // Assemble
-            OasysUnits.Area originalA = Utility.Area.CalculateArea(section.Profile);
+            Area originalA = Areas.CalculateArea(section.Profile);
             IPerimeter perimeter = new Perimeter(section.Profile);
 
             // Act
-            OasysUnits.Area area = Utility.Area.CalculateArea(perimeter);
+            Area area = Areas.CalculateArea(perimeter);
 
             // Assert
             Assert.Equal(originalA.SquareCentimeters, area.SquareCentimeters, 0.05 * area.SquareCentimeters);
@@ -63,13 +60,13 @@ namespace SectionPropertiesTests
             }
 
             // Assemble
-            Length originalYy = RadiusOfGyration.CalculateRadiusOfGyrationYy(section.Profile);
-            Length originalZz = RadiusOfGyration.CalculateRadiusOfGyrationZz(section.Profile);
+            Length originalYy = RadiusOfGyrations.CalculateRadiusOfGyrationYy(section.Profile);
+            Length originalZz = RadiusOfGyrations.CalculateRadiusOfGyrationZz(section.Profile);
             IPerimeter perimeter = new Perimeter(section.Profile);
 
             // Act
-            Length radiusOfGyrationYy = RadiusOfGyration.CalculateRadiusOfGyrationYy(perimeter);
-            Length radiusOfGyrationZz = RadiusOfGyration.CalculateRadiusOfGyrationZz(perimeter);
+            Length radiusOfGyrationYy = RadiusOfGyrations.CalculateRadiusOfGyrationYy(perimeter);
+            Length radiusOfGyrationZz = RadiusOfGyrations.CalculateRadiusOfGyrationZz(perimeter);
 
             // Assert
             Assert.Equal(originalYy.Centimeters, radiusOfGyrationYy.Centimeters, 0.05 * radiusOfGyrationYy.Centimeters);
@@ -87,13 +84,13 @@ namespace SectionPropertiesTests
             }
 
             // Assemble
-            AreaMomentOfInertia originalYy = Inertia.CalculateInertiaYy(section.Profile);
-            AreaMomentOfInertia originalZz = Inertia.CalculateInertiaZz(section.Profile);
+            AreaMomentOfInertia originalYy = Inertiae.CalculateInertiaYy(section.Profile);
+            AreaMomentOfInertia originalZz = Inertiae.CalculateInertiaZz(section.Profile);
             IPerimeter perimeter = new Perimeter(section.Profile);
 
             // Act
-            AreaMomentOfInertia inertiaYy = Inertia.CalculateInertiaYy(perimeter);
-            AreaMomentOfInertia inertiaZz = Inertia.CalculateInertiaZz(perimeter);
+            AreaMomentOfInertia inertiaYy = Inertiae.CalculateInertiaYy(perimeter);
+            AreaMomentOfInertia inertiaZz = Inertiae.CalculateInertiaZz(perimeter);
 
             // Assert
             Assert.Equal(originalYy.CentimetersToTheFourth, inertiaYy.CentimetersToTheFourth, 0.05 * inertiaYy.CentimetersToTheFourth);
@@ -111,13 +108,13 @@ namespace SectionPropertiesTests
             }
 
             // Assemble
-            OasysUnits.SectionModulus originalYy = SectionModulus.CalculateSectionModulusYy(section.Profile);
-            OasysUnits.SectionModulus originalZz = SectionModulus.CalculateSectionModulusZz(section.Profile);
+            SectionModulus originalYy = SectionModuli.CalculateSectionModulusYy(section.Profile);
+            SectionModulus originalZz = SectionModuli.CalculateSectionModulusZz(section.Profile);
             IPerimeter perimeter = new Perimeter(section.Profile);
 
             // Act
-            OasysUnits.SectionModulus inertiaYy = SectionModulus.CalculateSectionModulusYy(perimeter);
-            OasysUnits.SectionModulus inertiaZz = SectionModulus.CalculateSectionModulusZz(perimeter);
+            SectionModulus inertiaYy = SectionModuli.CalculateSectionModulusYy(perimeter);
+            SectionModulus inertiaZz = SectionModuli.CalculateSectionModulusZz(perimeter);
 
             // Assert
             Assert.Equal(originalYy.CubicCentimeters, inertiaYy.CubicCentimeters, 0.05 * inertiaYy.CubicCentimeters);

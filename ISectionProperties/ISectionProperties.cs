@@ -1,5 +1,4 @@
 ﻿using MagmaWorks.Geometry;
-using OasysUnits;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {

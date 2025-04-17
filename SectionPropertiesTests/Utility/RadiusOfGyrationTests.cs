@@ -1,5 +1,4 @@
 ﻿using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits;
 using Utility = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 
 namespace SectionPropertiesTests
@@ -10,11 +9,11 @@ namespace SectionPropertiesTests
         public void Angle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateAngle().Profile;
+            IProfile section = Sections.CreateAngle().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(5.38983, Ryy.Millimeters, 5);
@@ -25,11 +24,11 @@ namespace SectionPropertiesTests
         public void C()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateC().Profile;
+            IProfile section = Sections.CreateC().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(78.1934, Ryy.Millimeters, 4);
@@ -40,11 +39,11 @@ namespace SectionPropertiesTests
         public void Channel()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateChannel().Profile;
+            IProfile section = Sections.CreateChannel().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(79.8028, Ryy.Millimeters, 0);
@@ -55,11 +54,11 @@ namespace SectionPropertiesTests
         public void Circle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCircle().Profile;
+            IProfile section = Sections.CreateCircle().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(75, Ryy.Millimeters, 0);
@@ -70,11 +69,11 @@ namespace SectionPropertiesTests
         public void CircularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCircularHollow().Profile;
+            IProfile section = Sections.CreateCircularHollow().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(67.2681, Ryy.Millimeters, 4);
@@ -85,11 +84,11 @@ namespace SectionPropertiesTests
         public void Cruciform()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCruciform().Profile;
+            IProfile section = Sections.CreateCruciform().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(5.0822, Ryy.Millimeters, 4);
@@ -100,11 +99,11 @@ namespace SectionPropertiesTests
         public void CustomI()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCustomI().Profile;
+            IProfile section = Sections.CreateCustomI().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(68.5869, Ryy.Millimeters, 4);
@@ -115,11 +114,11 @@ namespace SectionPropertiesTests
         public void DoubleAngle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateDoubleAngle().Profile;
+            IProfile section = Sections.CreateDoubleAngle().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(5.38983, Ryy.Millimeters, 5);
@@ -130,11 +129,11 @@ namespace SectionPropertiesTests
         public void DoubleChannel()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateDoubleChannel().Profile;
+            IProfile section = Sections.CreateDoubleChannel().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(79.8028, Ryy.Millimeters, 4);
@@ -145,11 +144,11 @@ namespace SectionPropertiesTests
         public void Ellipse()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateEllipse().Profile;
+            IProfile section = Sections.CreateEllipse().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(30.0, Ryy.Millimeters, 0);
@@ -160,11 +159,11 @@ namespace SectionPropertiesTests
         public void EllipseHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateEllipseHollow().Profile;
+            IProfile section = Sections.CreateEllipseHollow().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(39.6695, Ryy.Millimeters, 4);
@@ -175,11 +174,11 @@ namespace SectionPropertiesTests
         public void ParallelFlange()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateIParallelFlange().Profile;
+            IProfile section = Sections.CreateIParallelFlange().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(211.923, Ryy.Millimeters, 3);
@@ -190,11 +189,11 @@ namespace SectionPropertiesTests
         public void I()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateI().Profile;
+            IProfile section = Sections.CreateI().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(90.2742, Ryy.Millimeters, 4);
@@ -205,11 +204,11 @@ namespace SectionPropertiesTests
         public void Rectangle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRectangle().Profile;
+            IProfile section = Sections.CreateRectangle().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(6.63953, Ryy.Millimeters, 5);
@@ -220,11 +219,11 @@ namespace SectionPropertiesTests
         public void RectangularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRectangularHollow().Profile;
+            IProfile section = Sections.CreateRectangularHollow().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(86.6992, Ryy.Millimeters, 4);
@@ -235,11 +234,11 @@ namespace SectionPropertiesTests
         public void RoundedRectangle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRoundedRectangle().Profile;
+            IProfile section = Sections.CreateRoundedRectangle().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(70.7767, Ryy.Millimeters, 4);
@@ -250,11 +249,11 @@ namespace SectionPropertiesTests
         public void RoundedRectangularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRoundedRectangularHollow().Profile;
+            IProfile section = Sections.CreateRoundedRectangularHollow().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(169.65, Ryy.Millimeters, 2);
@@ -265,11 +264,11 @@ namespace SectionPropertiesTests
         public void Tee()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTee().Profile;
+            IProfile section = Sections.CreateTee().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(63.7779, Ryy.Millimeters, 0);
@@ -280,11 +279,11 @@ namespace SectionPropertiesTests
         public void Trapezoid()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTrapezoid().Profile;
+            IProfile section = Sections.CreateTrapezoid().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(57.4373, Ryy.Millimeters, 4);
@@ -295,11 +294,11 @@ namespace SectionPropertiesTests
         public void Z()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateZ().Profile;
+            IProfile section = Sections.CreateZ().Profile;
 
             // Act
-            Length Ryy = Utility.RadiusOfGyration.CalculateRadiusOfGyrationYy(section);
-            Length Rzz = Utility.RadiusOfGyration.CalculateRadiusOfGyrationZz(section);
+            Length Ryy = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationYy(section);
+            Length Rzz = Utility.RadiusOfGyrations.CalculateRadiusOfGyrationZz(section);
 
             // Assert
             Assert.Equal(158.548, Ryy.Millimeters, 3);

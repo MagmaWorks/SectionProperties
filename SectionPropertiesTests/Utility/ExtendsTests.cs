@@ -10,7 +10,7 @@ namespace SectionPropertiesTests
         public void Angle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateAngle().Profile;
+            IProfile section = Sections.CreateAngle().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -26,7 +26,7 @@ namespace SectionPropertiesTests
         public void C()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateC().Profile;
+            IProfile section = Sections.CreateC().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -42,7 +42,7 @@ namespace SectionPropertiesTests
         public void Channel()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateChannel().Profile;
+            IProfile section = Sections.CreateChannel().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -58,7 +58,7 @@ namespace SectionPropertiesTests
         public void Circle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCircle().Profile;
+            IProfile section = Sections.CreateCircle().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -74,7 +74,7 @@ namespace SectionPropertiesTests
         public void CircularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCircularHollow().Profile;
+            IProfile section = Sections.CreateCircularHollow().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -90,7 +90,7 @@ namespace SectionPropertiesTests
         public void Cruciform()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCruciform().Profile;
+            IProfile section = Sections.CreateCruciform().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -106,7 +106,7 @@ namespace SectionPropertiesTests
         public void CustomI()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCustomI().Profile;
+            IProfile section = Sections.CreateCustomI().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -122,7 +122,7 @@ namespace SectionPropertiesTests
         public void DoubleAngle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateDoubleAngle().Profile;
+            IProfile section = Sections.CreateDoubleAngle().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -138,7 +138,7 @@ namespace SectionPropertiesTests
         public void DoubleChannel()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateDoubleChannel().Profile;
+            IProfile section = Sections.CreateDoubleChannel().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -154,7 +154,7 @@ namespace SectionPropertiesTests
         public void Ellipse()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateEllipse().Profile;
+            IProfile section = Sections.CreateEllipse().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -170,7 +170,7 @@ namespace SectionPropertiesTests
         public void EllipseHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateEllipseHollow().Profile;
+            IProfile section = Sections.CreateEllipseHollow().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -186,7 +186,7 @@ namespace SectionPropertiesTests
         public void ParallelFlange()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateIParallelFlange().Profile;
+            IProfile section = Sections.CreateIParallelFlange().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -202,7 +202,7 @@ namespace SectionPropertiesTests
         public void I()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateI().Profile;
+            IProfile section = Sections.CreateI().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -218,7 +218,7 @@ namespace SectionPropertiesTests
         public void Rectangle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRectangle().Profile;
+            IProfile section = Sections.CreateRectangle().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -234,7 +234,7 @@ namespace SectionPropertiesTests
         public void RectangularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRectangularHollow().Profile;
+            IProfile section = Sections.CreateRectangularHollow().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -250,7 +250,7 @@ namespace SectionPropertiesTests
         public void RoundedRectangle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRoundedRectangle().Profile;
+            IProfile section = Sections.CreateRoundedRectangle().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -266,7 +266,7 @@ namespace SectionPropertiesTests
         public void RoundedRectangularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRoundedRectangularHollow().Profile;
+            IProfile section = Sections.CreateRoundedRectangularHollow().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -282,7 +282,7 @@ namespace SectionPropertiesTests
         public void Tee()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTee().Profile;
+            IProfile section = Sections.CreateTee().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -298,7 +298,7 @@ namespace SectionPropertiesTests
         public void Trapezoid()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTrapezoid().Profile;
+            IProfile section = Sections.CreateTrapezoid().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -314,7 +314,7 @@ namespace SectionPropertiesTests
         public void Z()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateZ().Profile;
+            IProfile section = Sections.CreateZ().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);
@@ -330,7 +330,7 @@ namespace SectionPropertiesTests
         public void Perimeter()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.Perimeter().Profile;
+            IProfile section = Sections.Perimeter().Profile;
 
             // Act
             ILocalDomain2d domain = Extends.GetDomain(section);

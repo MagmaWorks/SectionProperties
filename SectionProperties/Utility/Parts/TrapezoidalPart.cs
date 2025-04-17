@@ -1,9 +1,4 @@
-﻿using System;
-using MagmaWorks.Geometry;
-using OasysUnits;
-using OasysUnits.Units;
-
-namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
+﻿namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
 {
     internal readonly struct TrapezoidalPart : IPart
     {
@@ -57,12 +52,12 @@ namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
             ElasticCentroid = centroid;
         }
 
-        public OasysUnits.Area GetArea()
+        public Area GetArea()
         {
             LengthUnit unit = b.Unit;
-            OasysUnits.Area res = OasysUnits.Area.Zero;
-            OasysUnits.Area.TryParse($"0 {Length.GetAbbreviation(unit)}²", out res);
-            return new OasysUnits.Area(0.5 * (a.As(unit) + b.As(unit)) * h.As(unit), res.Unit);
+            Area res = Area.Zero;
+            Area.TryParse($"0 {Length.GetAbbreviation(unit)}²", out res);
+            return new Area(0.5 * (a.As(unit) + b.As(unit)) * h.As(unit), res.Unit);
         }
 
         public AreaMomentOfInertia GetMomentOfInertiaYy()

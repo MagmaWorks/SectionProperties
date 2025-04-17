@@ -1,5 +1,4 @@
 ﻿using MagmaWorks.Taxonomy.Profiles;
-using OasysUnits;
 using Utility = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 
 namespace SectionPropertiesTests
@@ -10,11 +9,11 @@ namespace SectionPropertiesTests
         public void Angle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateAngle().Profile;
+            IProfile section = Sections.CreateAngle().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(1812.22, Wyy.CubicMillimeters, 2);
@@ -25,11 +24,11 @@ namespace SectionPropertiesTests
         public void C()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateC().Profile;
+            IProfile section = Sections.CreateC().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(250978, Wyy.CubicMillimeters, 0);
@@ -40,11 +39,11 @@ namespace SectionPropertiesTests
         public void Channel()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateChannel().Profile;
+            IProfile section = Sections.CreateChannel().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(299825, Wyy.CubicMillimeters, 0);
@@ -55,11 +54,11 @@ namespace SectionPropertiesTests
         public void Circle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCircle().Profile;
+            IProfile section = Sections.CreateCircle().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             double expected = Math.PI / 32 * Math.Pow(300, 3);
@@ -71,11 +70,11 @@ namespace SectionPropertiesTests
         public void CircularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCircularHollow().Profile;
+            IProfile section = Sections.CreateCircularHollow().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             double expected = Math.PI / 32.0 * (Math.Pow(200.0, 4) - Math.Pow(180.0, 4)) / 200.0;
@@ -87,11 +86,11 @@ namespace SectionPropertiesTests
         public void Cruciform()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCruciform().Profile;
+            IProfile section = Sections.CreateCruciform().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(2015.09, Wyy.CubicMillimeters, 2);
@@ -102,11 +101,11 @@ namespace SectionPropertiesTests
         public void CustomI()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateCustomI().Profile;
+            IProfile section = Sections.CreateCustomI().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(1.170417E+6, Wyy.CubicMillimeters, 0);
@@ -117,11 +116,11 @@ namespace SectionPropertiesTests
         public void DoubleAngle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateDoubleAngle().Profile;
+            IProfile section = Sections.CreateDoubleAngle().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(3624.45, Wyy.CubicMillimeters, 2);
@@ -132,11 +131,11 @@ namespace SectionPropertiesTests
         public void DoubleChannel()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateDoubleChannel().Profile;
+            IProfile section = Sections.CreateDoubleChannel().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(599649, Wyy.CubicMillimeters, 0);
@@ -147,11 +146,11 @@ namespace SectionPropertiesTests
         public void Ellipse()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateEllipse().Profile;
+            IProfile section = Sections.CreateEllipse().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(254469, Wyy.CubicMillimeters, 0);
@@ -162,11 +161,11 @@ namespace SectionPropertiesTests
         public void EllipseHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateEllipseHollow().Profile;
+            IProfile section = Sections.CreateEllipseHollow().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(159893, Wyy.CubicMillimeters, 0);
@@ -177,11 +176,11 @@ namespace SectionPropertiesTests
         public void ParallelFlange()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateIParallelFlange().Profile;
+            IProfile section = Sections.CreateIParallelFlange().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(4287, Wyy.CubicMillimeters / 1000, 0);
@@ -192,11 +191,11 @@ namespace SectionPropertiesTests
         public void I()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateI().Profile;
+            IProfile section = Sections.CreateI().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(1.365388E+6, Wyy.CubicMillimeters, 0);
@@ -207,11 +206,11 @@ namespace SectionPropertiesTests
         public void Rectangle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRectangle().Profile;
+            IProfile section = Sections.CreateRectangle().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(1.0 / 6 * 54 * 23 * 23, Wyy.CubicMillimeters, 10);
@@ -222,11 +221,11 @@ namespace SectionPropertiesTests
         public void RectangularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRectangularHollow().Profile;
+            IProfile section = Sections.CreateRectangularHollow().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(1.106211E+6, Wyy.CubicMillimeters, 0);
@@ -237,11 +236,11 @@ namespace SectionPropertiesTests
         public void RoundedRectangle()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRoundedRectangle().Profile;
+            IProfile section = Sections.CreateRoundedRectangle().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(1960735, Wyy.CubicMillimeters, 0);
@@ -252,11 +251,11 @@ namespace SectionPropertiesTests
         public void RoundedRectangularHollow()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateRoundedRectangularHollow().Profile;
+            IProfile section = Sections.CreateRoundedRectangularHollow().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(1723904, Wyy.CubicMillimeters, 0);
@@ -267,11 +266,11 @@ namespace SectionPropertiesTests
         public void Tee()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTee().Profile;
+            IProfile section = Sections.CreateTee().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(99330.6, Wyy.CubicMillimeters, 1);
@@ -282,11 +281,11 @@ namespace SectionPropertiesTests
         public void Trapezoid()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateTrapezoid().Profile;
+            IProfile section = Sections.CreateTrapezoid().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(775843, Wyy.CubicMillimeters, 0);
@@ -297,11 +296,11 @@ namespace SectionPropertiesTests
         public void Z()
         {
             // Assemble
-            IProfile section = TestUtility.Sections.CreateZ().Profile;
+            IProfile section = Sections.CreateZ().Profile;
 
             // Act
-            SectionModulus Wyy = Utility.SectionModulus.CalculateSectionModulusYy(section);
-            SectionModulus Wzz = Utility.SectionModulus.CalculateSectionModulusZz(section);
+            SectionModulus Wyy = Utility.SectionModuli.CalculateSectionModulusYy(section);
+            SectionModulus Wzz = Utility.SectionModuli.CalculateSectionModulusZz(section);
 
             // Assert
             Assert.Equal(2.146042E+6, Wyy.CubicMillimeters, 0);

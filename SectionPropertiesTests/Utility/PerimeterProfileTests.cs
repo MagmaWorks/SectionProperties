@@ -4,7 +4,6 @@ using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
 using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 using SectionModuli = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.SectionModuli;
-using Utility = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 
 namespace SectionPropertiesTests
 {

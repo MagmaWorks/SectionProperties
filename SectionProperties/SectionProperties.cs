@@ -1,7 +1,4 @@
-﻿using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Profiles;
-
-namespace MagmaWorks.Taxonomy.Sections.SectionProperties
+﻿namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
     public class SectionProperties : ISectionProperties
     {

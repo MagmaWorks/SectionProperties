@@ -1,4 +1,4 @@
-﻿namespace MagmaWorks.Taxonomy.Sections.Properties
+﻿namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
     public class SectionProperties : ISectionProperties
     {

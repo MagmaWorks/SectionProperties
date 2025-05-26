@@ -1,6 +1,6 @@
-﻿using MagmaWorks.Taxonomy.Sections.Properties.Utility;
+﻿using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
 
-namespace MagmaWorks.Taxonomy.Sections.Properties
+namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
     public class ConcreteSectionProperties : SectionProperties, IConcreteSectionProperties
     {

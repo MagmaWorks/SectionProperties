@@ -1,4 +1,4 @@
-﻿namespace MagmaWorks.Taxonomy.Sections.Properties.Utility
+﻿namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
     internal static class PerimeterProfiles
     {

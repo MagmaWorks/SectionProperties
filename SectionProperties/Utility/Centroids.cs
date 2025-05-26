@@ -1,6 +1,6 @@
-﻿using MagmaWorks.Taxonomy.Sections.Properties.Utility.Parts;
+﻿using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
 
-namespace MagmaWorks.Taxonomy.Sections.Properties.Utility
+namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {
     public static class Centroids
     {

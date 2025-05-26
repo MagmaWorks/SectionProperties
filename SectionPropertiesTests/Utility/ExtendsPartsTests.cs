@@ -1,6 +1,6 @@
 ﻿using MagmaWorks.Geometry;
-using MagmaWorks.Taxonomy.Sections.Properties.Utility;
-using MagmaWorks.Taxonomy.Sections.Properties.Utility.Parts;
+using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
+using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
 
 namespace SectionPropertiesTests
 {

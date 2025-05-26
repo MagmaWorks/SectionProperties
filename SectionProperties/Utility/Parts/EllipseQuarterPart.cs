@@ -1,4 +1,4 @@
-﻿namespace MagmaWorks.Taxonomy.Sections.Properties.Utility.Parts
+﻿namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
 {
     internal readonly struct EllipseQuarterPart : IPart
     {

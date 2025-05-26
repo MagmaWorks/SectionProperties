@@ -2,8 +2,8 @@
 using System.Reflection;
 using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Profiles;
-using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
-using SectionModuli = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.SectionModuli;
+using MagmaWorks.Taxonomy.Sections.Properties.Utility;
+using SectionModuli = MagmaWorks.Taxonomy.Sections.Properties.Utility.SectionModuli;
 
 namespace SectionPropertiesTests
 {

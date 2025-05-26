@@ -1,4 +1,4 @@
-﻿namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
+﻿namespace MagmaWorks.Taxonomy.Sections.Properties.Utility.Parts
 {
     internal interface IPart
     {

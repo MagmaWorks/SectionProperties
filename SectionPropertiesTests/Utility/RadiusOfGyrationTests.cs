@@ -1,5 +1,5 @@
 ﻿using MagmaWorks.Taxonomy.Profiles;
-using Utility = MagmaWorks.Taxonomy.Sections.SectionProperties.Utility;
+using Utility = MagmaWorks.Taxonomy.Sections.Properties.Utility;
 
 namespace SectionPropertiesTests
 {

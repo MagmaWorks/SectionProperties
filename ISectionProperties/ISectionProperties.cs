@@ -1,7 +1,7 @@
 ﻿using MagmaWorks.Geometry;
 using MagmaWorks.Taxonomy.Serialization;
 
-namespace MagmaWorks.Taxonomy.Sections.SectionProperties
+namespace MagmaWorks.Taxonomy.Sections.Properties
 {
     public interface ISectionProperties : ITaxonomySerializable
     {

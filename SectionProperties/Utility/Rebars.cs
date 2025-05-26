@@ -1,4 +1,5 @@
-﻿using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
+﻿using MagmaWorks.Taxonomy.Sections.Reinforcement;
+using MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility
 {

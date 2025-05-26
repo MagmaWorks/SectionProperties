@@ -1,6 +1,4 @@
-﻿using MagmaWorks.Geometry;
-
-namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
+﻿namespace MagmaWorks.Taxonomy.Sections.SectionProperties.Utility.Parts
 {
     internal interface IPart
     {

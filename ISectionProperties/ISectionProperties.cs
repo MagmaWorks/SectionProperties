@@ -1,8 +1,9 @@
 ﻿using MagmaWorks.Geometry;
+using MagmaWorks.Taxonomy.Serialization;
 
 namespace MagmaWorks.Taxonomy.Sections.SectionProperties
 {
-    public interface ISectionProperties
+    public interface ISectionProperties : ITaxonomySerializable
     {
         ILocalDomain2d Extends { get; }
         ILocalPoint2d Centroid { get; }

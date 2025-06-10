@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="MagmaWorks.Geometry" Version="0.1.0" />
-    <PackageReference Include="MagmaWorks.Taxonomy.Profiles.Perimeter" Version="0.1.2" />
+    <PackageReference Include="MagmaWorks.Taxonomy.Profiles.Perimeter" Version="0.1.7" />
     <PackageReference Include="MinVer" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

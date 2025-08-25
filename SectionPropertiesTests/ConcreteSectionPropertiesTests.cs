@@ -156,7 +156,7 @@ namespace SectionPropertiesTests
 
         [Theory]
         // values updated after moving corner rebars inwards for link mandrel diameter
-        [InlineData(703.53553390599996, SectionFace.Bottom)] 
+        [InlineData(703.53553390599996, SectionFace.Bottom)]
         [InlineData(704.89949493699999, SectionFace.Top)]
         [InlineData(309.958285165, SectionFace.Right)]
         [InlineData(309.958285165, SectionFace.Left)]

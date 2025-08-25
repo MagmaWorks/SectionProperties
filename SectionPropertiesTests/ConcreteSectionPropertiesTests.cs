@@ -78,7 +78,10 @@ namespace SectionPropertiesTests
                 + (Math.PI / 4 * Math.Pow(12, 2) * Math.Pow(334, 2)));
             expected += 4 * (Math.PI / 64 * Math.Pow(20, 4)
                 + (Math.PI / 4 * Math.Pow(20, 2) * Math.Pow(330, 2)));
-            Assert.Equal(expected, props.ReinforcementSecondMomentOfAreaYy.MillimetersToTheFourth, 9);
+            // values updated after moving corner rebars inwards for link mandrel diameter
+            // manual expected calc above = 162114600.39354497
+            double expected2 = 160289615.94092032;
+            Assert.Equal(expected2, props.ReinforcementSecondMomentOfAreaYy.MillimetersToTheFourth, 9);
         }
 
         [Fact]
@@ -97,7 +100,10 @@ namespace SectionPropertiesTests
                 + (Math.PI / 4 * Math.Pow(20, 2) * Math.Pow(155, 2)));
             expected += 2 * (Math.PI / 64 * Math.Pow(20, 4)
                 + (Math.PI / 4 * Math.Pow(20, 2) * Math.Pow(51.666667, 2)));
-            Assert.Equal(expected, props.ReinforcementSecondMomentOfAreaZz.MillimetersToTheFourth, 9);
+            // values updated after moving corner rebars inwards for link mandrel diameter
+            // manual expected calc above = 22524493.290912069
+            double expected2 = 21668244.005340151;
+            Assert.Equal(expected2, props.ReinforcementSecondMomentOfAreaZz.MillimetersToTheFourth, 9);
         }
 
         [Fact]
@@ -116,7 +122,11 @@ namespace SectionPropertiesTests
                 + (Math.PI / 4 * Math.Pow(20, 2) * Math.Pow(330, 2)));
             expected /= 2 * Math.PI / 4 * Math.Pow(12, 2)
                 + 4 * Math.PI / 4 * Math.Pow(20, 2);
-            Assert.Equal(Math.Sqrt(expected), props.ReinforcementRadiusOfGyrationYy.Millimeters, 9);
+            expected = Math.Sqrt(expected);
+            // values updated after moving corner rebars inwards for link mandrel diameter
+            // manual expected calc above = 330.64741321299999
+            double expected2 = 328.78103516099998;
+            Assert.Equal(expected2, props.ReinforcementRadiusOfGyrationYy.Millimeters, 9);
         }
 
         [Fact]
@@ -137,14 +147,19 @@ namespace SectionPropertiesTests
                 + (Math.PI / 4 * Math.Pow(20, 2) * Math.Pow(51.666667, 2)));
             expected /= 2 * Math.PI / 4 * Math.Pow(12, 2)
                 + 4 * Math.PI / 4 * Math.Pow(20, 2);
-            Assert.Equal(Math.Sqrt(expected), props.ReinforcementRadiusOfGyrationZz.Millimeters, 9);
+            expected = Math.Sqrt(expected);
+            // values updated after moving corner rebars inwards for link mandrel diameter
+            // manual expected calc above = 123.248482094
+            double expected2 = 120.883193053;
+            Assert.Equal(expected2, props.ReinforcementRadiusOfGyrationZz.Millimeters, 9);
         }
 
         [Theory]
-        [InlineData(750 / 2 + 330, SectionFace.Bottom)]
-        [InlineData(750 / 2 + 334, SectionFace.Top)]
-        [InlineData(311.824858898, SectionFace.Right)]
-        [InlineData(311.824858898, SectionFace.Left)]
+        // values updated after moving corner rebars inwards for link mandrel diameter
+        [InlineData(703.53553390599996, SectionFace.Bottom)] 
+        [InlineData(704.89949493699999, SectionFace.Top)]
+        [InlineData(309.958285165, SectionFace.Right)]
+        [InlineData(309.958285165, SectionFace.Left)]
         public void EffectiveDepthTest(double expected, SectionFace face)
         {
             // Assemble
